@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import { Tv, ArrowLeft, Home, MessageCircle, HelpCircle } from 'lucide-astro';
+
+const breadcrumbs = [
+  { name: 'Hjem', item: '/' },
+  { name: '404 - Siden ble ikke funnet', item: '/404' },
+];
+---
+
+<Layout
+  title="404 — Siden Ble Ikke Funnet | Norsk IPTV"
+  description="Beklager, siden du leter etter eksisterer ikke eller har blitt flyttet. Gå tilbake til forsiden eller kontakt Norsk IPTV support."
+  breadcrumbs={breadcrumbs}
+>
+  <StickyHeader />
+
+  <main class="py-20 md:py-32 flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    
+    <!-- Ambient Glow Lights -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-gradient-to-tr from-[#8b5cf6]/20 to-[#06b6d4]/15 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+
+    <div class="max-w-lg w-full text-center">
+      
+      <!-- 404 Glitch Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#8b5cf6]/10 border border-[#8b5cf6]/30 text-xs font-bold text-[#c084fc] mb-6">
+        <span>FEILKODE: 404</span>
+      </div>
+
+      <!-- Error Number -->
+      <h1 class="text-7xl sm:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#8b5cf6] via-[#a78bfa] to-[#06b6d4] tracking-tighter mb-4 font-mono">
+        404
+      </h1>
+
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4">
+        Oops! Siden Ble Ikke Funnet
+      </h2>
+
+      <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-8 max-w-md mx-auto">
+        Det ser ut til at siden du leter etter har blitt flyttet, slettet eller aldri eksisterte. Fortvil ikke – du kan gå tilbake til forsiden eller kontakte vår support.
+      </p>
+
+      <!-- Action Buttons Grid -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#8b5cf6] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#6d28d9] text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#8b5cf6]/30 transition-all transform hover:-translate-y-0.5"
+        >
+          <Home class="w-4 h-4" />
+          <span>Til Forsiden</span>
+        </a>
+
+        <a
+          href="https://wa.me/18036582620"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/15 text-xs font-semibold transition-colors"
+        >
+          <MessageCircle class="w-4 h-4 text-[#25D366]" />
+          <span>Kontakt Support</span>
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <Footer />
+  <FloatingWhatsApp />
+</Layout>

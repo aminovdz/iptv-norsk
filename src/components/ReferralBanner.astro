@@ -1,0 +1,60 @@
+---
+import { Users, Gift, Sparkles, ArrowRight, ShieldCheck, HeartHandshake } from 'lucide-astro';
+
+interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
+---
+
+<section class={`py-12 relative overflow-hidden ${className}`} aria-labelledby="referral-banner-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative rounded-3xl bg-gradient-to-r from-[#181432] via-[#10132a] to-[#0a1e28] border border-[#8b5cf6]/40 p-8 sm:p-10 shadow-xl shadow-[#8b5cf6]/10 flex flex-col lg:flex-row items-center justify-between gap-8">
+      
+      <!-- Left Column: Icon & Text -->
+      <div class="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-5">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#8b5cf6] to-[#06b6d4] p-[2px] shrink-0 shadow-lg shadow-[#8b5cf6]/30">
+          <div class="w-full h-full bg-[#0e0e17] rounded-[14px] flex items-center justify-center text-white">
+            <Gift class="w-8 h-8 text-[#06b6d4]" />
+          </div>
+        </div>
+
+        <div>
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#8b5cf6]/20 border border-[#8b5cf6]/30 text-xs font-bold text-[#c084fc] mb-2">
+            <Sparkles class="w-3.5 h-3.5" />
+            <span>NORSK IPTV VERVEPROGRAM</span>
+          </div>
+          <h2 id="referral-banner-heading" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight">
+            Verv en Venn — Få <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4]">1 Måned Gratis IPTV</span>
+          </h2>
+          <p class="text-xs sm:text-sm text-gray-300 mt-2 max-w-xl leading-relaxed">
+            Del din personlige anbefaling med venner og familie. For hver person som bestiller et årsabonnement, mottar dere begge 1 måned ekstra helt gratis!
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: CTAs -->
+      <div class="flex flex-col sm:flex-row lg:flex-col gap-3 w-full sm:w-auto shrink-0">
+        <a
+          href="/referral"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#8b5cf6] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#6d28d9] text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#8b5cf6]/30 transition-all duration-200"
+          aria-label="Les mer om verveprogrammet"
+        >
+          <span>Start Å Verve Nå</span>
+          <ArrowRight class="w-4 h-4" />
+        </a>
+        <a
+          href="https://wa.me/18036582620?text=Hei!%20Jeg%20ønsker%20å%20verve%20en%20venn%20til%20Norsk%20IPTV."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/10 text-xs font-semibold transition-colors"
+        >
+          <HeartHandshake class="w-4 h-4 text-[#06b6d4]" />
+          <span>Få Vervekode på WhatsApp</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

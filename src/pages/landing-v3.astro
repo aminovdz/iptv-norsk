@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Hero from '../components/Hero.astro';
+import LiveScores from '../components/LiveScores.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import PricingCard from '../components/PricingCard.astro';
+import ReferralBanner from '../components/ReferralBanner.astro';
+import UserReviewsSection from '../components/UserReviewsSection.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import SupportedDevices from '../components/SupportedDevices.astro';
+import CitiesList from '../components/CitiesList.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+
+// Conversion Widgets
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import GroupsPopup from '../components/GroupsPopup.astro';
+import ExitPopup from '../components/ExitPopup.astro';
+import SocialPopup from '../components/SocialPopup.astro';
+
+import { Sparkles, Tv, Smartphone, ShieldCheck, HeartHandshake, Zap } from 'lucide-astro';
+
+const breadcrumbs = [
+  { name: 'Hjem', item: '/' },
+  { name: 'IPTV Abonnement Norge', item: '/landing-v3' },
+];
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Norsk IPTV Abonnement — Fleksibel TV for Hele Familien",
+  "image": "https://norsk-iptv.net/favicon.svg",
+  "description": "Nyt direktesendt TV, sport, filmer og serier på alle Smart TV-er, Apple TV og mobiler med Norges mest fleksible IPTV abonnement.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Norsk IPTV"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "NOK",
+    "lowPrice": "90",
+    "highPrice": "600",
+    "offerCount": "4"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "1250"
+  }
+};
+---
+
+<Layout
+  title="Norsk IPTV Abonnement — Enkel Strømming i 4K på Alle Enheter"
+  description="Få det mest komplette IPTV-abonnementet i Norge. Fungerer på Samsung, LG, Firestick, Apple TV og mobil. Krystallklar 4K og ingen bindingstid!"
+  keywords="Norsk IPTV abonnement, IPTV Norge, Billig IPTV Norge, IPTV Smart TV, IPTV apper Norge, IPTV tilbud"
+  breadcrumbs={breadcrumbs}
+  schemaData={productSchema}
+>
+  <StickyHeader />
+
+  <main>
+    
+    <!-- 1. Hero Section (Variant 3 Focus on Subscription Ease & Family Entertainment) -->
+    <Hero
+      h1Text="Norsk IPTV Abonnement — Alt av TV, Sport og Serier i Krystallklar 4K"
+      subtitle="Gjør TV-hverdagen enklere og rimeligere for hele familien. Med et forhåndsbetalt Norsk IPTV abonnement får du umiddelbar tilgang til alle dine favorittkanaler i 4K Ultra HD på sekunder."
+      badge="⚡ Enkel Aktivering på under 3 minutter"
+      ctaText="Velg Ditt IPTV Abonnement"
+      ctaLink="#pricing"
+    />
+
+    <!-- Sports & Entertainment LiveScores Tracker -->
+    <LiveScores />
+
+    <!-- 2. Features Grid Section -->
+    <FeatureGrid />
+
+    <!-- Deep SEO Content Block (Family & Multi-Device Usability) -->
+    <section class="py-16 md:py-24 relative overflow-hidden bg-white/[0.01]" aria-labelledby="family-authority-heading">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="rounded-3xl bg-[#0e0e17] border border-white/10 p-8 sm:p-12 shadow-xl space-y-8 text-gray-300 text-sm sm:text-base leading-relaxed">
+          
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#06b6d4]/10 border border-[#06b6d4]/30 text-xs font-semibold text-[#06b6d4] mb-3">
+              <Sparkles class="w-3.5 h-3.5" />
+              <span>Moderne TV-opplevelse for Hele Familien</span>
+            </div>
+            <h2 id="family-authority-heading" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4">
+              Hvorfor Velge et <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4]">Fleksibelt IPTV Abonnement</span>?
+            </h2>
+            <p>
+              Med et <strong>norsk IPTV abonnement</strong> slipper du dyre månedlige fakturaer og kompliserte parabolantenner. Alt du trenger er din eksisterende Smart TV, streamingdongel eller smarttelefon og en stabil internettlinje. Vår tjeneste er utviklet for å være så intuitiv at både barn og voksne kan navigere enkelt i TV-guiden (EPG) og finne sine favorittprogrammer på et blunk.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-white/5">
+            <div class="space-y-3">
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <Smartphone class="w-5 h-5 text-[#8b5cf6]" />
+                <span>Se TV Hvor Som Helst i Norge</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-gray-400">
+                Enten du slapper av i stua, er på hytta på fjellet, eller reiser med tog, kan du ta med deg dine favorittsendinger på mobil og nettbrett. Våre servere tilpasser seg automatisk din båndbredde.
+              </p>
+            </div>
+
+            <div class="space-y-3">
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <Tv class="w-5 h-5 text-[#06b6d4]" />
+                <span>7 Dagers TV-Arkiv & Reprise</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-gray-400">
+                Gikk du glipp av gårsdagens nyheter, serieavsnitt eller helgens store sportsbegivenhet? Med vår innebygde Catch-Up funksjon kan du spole tilbake og se programmer inntil en hel uke etter at de ble sendt.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. Pricing Section (12-month prominently first) -->
+    <PricingCard />
+
+    <!-- 4. Referrer (ReferralBanner) Section -->
+    <ReferralBanner />
+
+    <!-- 5. Testimonials (UserReviewsSection) Section -->
+    <UserReviewsSection />
+
+    <!-- 6. How to Process (ProcessSteps) Section -->
+    <ProcessSteps />
+
+    <!-- 7. Supported Devices (SupportedDevices) Section -->
+    <SupportedDevices />
+
+    <!-- 8. Cities (CitiesList) Section -->
+    <CitiesList />
+
+    <!-- 9. Contact Section -->
+    <ContactForm />
+
+    <!-- 10. FAQ Section -->
+    <FAQSection />
+
+    <!-- 11. Final CTA Banner Section -->
+    <CTASection
+      title="Start Ditt IPTV Abonnement Nå Uten Bindingstid"
+      description="Få krystallklar 4K-strømming på alle enheter innen få minutter. Test Norges mest pålitelige IPTV helt risikofritt med 24-timers refusjonsgaranti."
+    />
+
+  </main>
+
+  <Footer />
+
+  <!-- Interactive Conversion Widgets -->
+  <FloatingWhatsApp />
+  <GroupsPopup />
+  <ExitPopup />
+  <SocialPopup />
+</Layout>

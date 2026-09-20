@@ -1,0 +1,177 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StickyHeader from '../../components/StickyHeader.astro';
+import PricingCard from '../../components/PricingCard.astro';
+import UserReviewsSection from '../../components/UserReviewsSection.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+import FloatingWhatsApp from '../../components/FloatingWhatsApp.astro';
+import GroupsPopup from '../../components/GroupsPopup.astro';
+import ExitPopup from '../../components/ExitPopup.astro';
+import SocialPopup from '../../components/SocialPopup.astro';
+
+import { Check, X, ShieldCheck, Zap, Star, Sparkles, Scale, ArrowRight, Award } from 'lucide-astro';
+
+export async function getStaticPaths() {
+  const comparisons = [
+    {
+      slug: 'norsk-iptv-vs-nordicprime',
+      competitorName: 'Nordic Prime',
+      competitorUrl: 'nordicprime.nu',
+      title: 'Norsk IPTV vs Nordic Prime — Stor Sammenligning & Test (2026)',
+      h1: 'Norsk IPTV vs Nordic Prime: Hvem Har den Beste IPTV Tjenesten i Norge?',
+      summary: 'Vi har testet og sammenlignet Norsk IPTV med Nordic Prime på bildekvalitet, serverstabilitet under direktesendt sport, kundeservice og pris. Se hvorfor Norsk IPTV kommer best ut.',
+      featuresTable: [
+        { feature: 'Serveroppetid & Stabilitet', us: '99.9% (Anti-Freeze™ 9.0)', them: 'Varierende under storkamper' },
+        { feature: '4K Ultra HD & 60 FPS', us: 'Ukomprimert 60 FPS på sport', them: 'Standard 30/60 FPS med kompresjon' },
+        { feature: 'Årspris (12 Måneder)', us: '600 kr (~€55) — Best Verdi', them: 'Høyere prisnivå (~800–1000 kr)' },
+        { feature: 'Refusjonsgaranti', us: '24-Timers Full Fornøydgaranti', them: 'Begrenset eller ingen garanti' },
+        { feature: 'Norsk Kundesupport', us: '24/7 Direkte på WhatsApp & Telegram', them: 'Kun e-post / treg responstid' },
+        { feature: 'Elektronisk Programguide (EPG)', us: 'Sanntids EPG med farger & logoer', them: 'Grunnleggende EPG' },
+        { feature: 'Ingen Bindingstid (Prepaid)', us: 'Ja — 100% trygg forhåndsbetaling', them: 'Ja' },
+      ],
+      verdict: 'Norsk IPTV vinner testen på grunn av betydelig lavere årspris (kun 600 kr), vesentlig raskere support på WhatsApp og overlegen bildeoverføring under norske og europeiske fotballsendinger.'
+    },
+    {
+      slug: 'norsk-iptv-vs-iptvnorge',
+      competitorName: 'IPTV Norge',
+      competitorUrl: 'iptvnorge.ai.studio',
+      title: 'Norsk IPTV vs IPTV Norge — Sammenligning & Anmeldelse (2026)',
+      h1: 'Norsk IPTV vs IPTV Norge: Hvilken Tjeneste Bør Du Velge?',
+      summary: 'En detaljert gjennomgang av funksjoner, serverhastigheter og brukervennlighet mellom Norsk IPTV og IPTV Norge. Les hele vurderingen her.',
+      featuresTable: [
+        { feature: 'Serveroppetid & Stabilitet', us: '99.9% med nordiske noder', them: 'Standard serverkapasitet' },
+        { feature: '4K Ultra HD & 60 FPS', us: 'Ja, full 4K på alle hovedsendinger', them: 'Primært HD / oppskalert 4K' },
+        { feature: 'Årspris (12 Måneder)', us: '600 kr (Fast forhåndspris)', them: 'Varierende priser og pakker' },
+        { feature: 'Refusjonsgaranti', us: '24-Timers Refusjonspolicy', them: 'Vilkårlige refusjonsbetingelser' },
+        { feature: 'Kundesupport', us: '24/7 Døgnåpen på WhatsApp', them: 'Standard åpningstider' },
+        { feature: 'Multi-Enhet Kompatibilitet', us: 'Smart TV, Firestick, Apple TV, Mobil', them: 'Smart TV & Android' },
+        { feature: '7 Dagers Catch-up TV', us: 'Ja — fullt reprise-arkiv', them: 'Kun utvalgte sendinger' },
+      ],
+      verdict: 'Med ukomprimert 4K-strømming, lynrask oppkobling under 3 minutter og en transparent prisstruktur på 600 kr for 12 måneder, er Norsk IPTV det tryggeste valget for norske seere.'
+    },
+    {
+      slug: 'norsk-iptv-vs-norskiptvlive',
+      competitorName: 'Norsk IPTV Live',
+      competitorUrl: 'norskiptv.live',
+      title: 'Norsk IPTV vs Norsk IPTV Live — Hvilken Er Best? (2026 Test)',
+      h1: 'Norsk IPTV vs Norsk IPTV Live: Sammenligning av Pris & Kvalitet',
+      summary: 'Se hvordan Norsk IPTV skiller seg ut fra Norsk IPTV Live med moderne 4K-teknologi, ekte Anti-Freeze servere og markedets beste kundeservice.',
+      featuresTable: [
+        { feature: 'Serveroppetid & Stabilitet', us: '99.9% Anti-Freeze™ 9.0', them: 'Standard stabilitet' },
+        { feature: '4K Ultra HD & 60 FPS', us: 'Ukomprimert 4K for sport & filmer', them: 'Varierende oppløsning' },
+        { feature: 'Årspris (12 Måneder)', us: '600 kr (~€55) Fastpris', them: 'Konkurransedyktig' },
+        { feature: 'Refusjonsgaranti', us: '24-Timers Fornøydgaranti', them: 'Begrenset' },
+        { feature: 'Supportkanaler', us: 'WhatsApp, Telegram & E-post (24/7)', them: 'Skjemabasert support' },
+        { feature: 'App-Støtte', us: 'TiviMate, IBO Player, Smarters, Apple TV', them: 'Standard apper' },
+        { feature: 'Leveringstid', us: 'Under 3 minutter helautomatisert', them: 'Opptil 1-2 timer' },
+      ],
+      verdict: 'Norsk IPTV leverer en moderne, profesjonell strømmeopplevelse med førsteklasses bildekvalitet, lynrask support og fullstendig gjennomsiktighet uten villedende løfter.'
+    }
+  ];
+
+  return comparisons.map((comp) => ({
+    params: { slug: comp.slug },
+    props: { comp },
+  }));
+}
+
+const { comp } = Astro.props;
+
+const breadcrumbs = [
+  { name: 'Hjem', item: '/' },
+  { name: 'Sammenligninger', item: '/compare' },
+  { name: `Norsk IPTV vs ${comp.competitorName}`, item: `/compare/${comp.slug}` },
+];
+---
+
+<Layout
+  title={comp.title}
+  description={comp.summary}
+  keywords={`Norsk IPTV vs ${comp.competitorName}, ${comp.competitorName} anmeldelse, Beste IPTV Norge, IPTV sammenligning`}
+  breadcrumbs={breadcrumbs}
+>
+  <StickyHeader />
+
+  <main class="py-16 md:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Hero Comparison Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#8b5cf6]/10 border border-[#8b5cf6]/30 text-xs font-semibold text-[#a78bfa] mb-4">
+        <Scale class="w-3.5 h-3.5 text-[#06b6d4]" />
+        <span>Uavhengig E-E-A-T Sammenligning 2026</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
+        {comp.h1}
+      </h1>
+      <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
+        {comp.summary}
+      </p>
+    </div>
+
+    <!-- Comparison Table Section -->
+    <div class="rounded-3xl bg-[#0e0e17] border border-white/10 p-6 sm:p-10 shadow-2xl mb-16 overflow-hidden">
+      <div class="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
+        <div class="text-lg font-bold text-white">Funksjon & Kriterium</div>
+        <div class="flex items-center gap-8 sm:gap-16">
+          <span class="text-sm font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4]">Norsk IPTV (Vinner)</span>
+          <span class="text-sm font-semibold text-gray-400">{comp.competitorName}</span>
+        </div>
+      </div>
+
+      <div class="divide-y divide-white/5 space-y-4">
+        {comp.featuresTable.map((row) => (
+          <div class="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs sm:text-sm">
+            <div class="font-semibold text-gray-300">{row.feature}</div>
+            <div class="flex items-center justify-between sm:justify-end gap-6 sm:gap-16">
+              <div class="flex items-center gap-1.5 text-[#a78bfa] font-bold">
+                <Check class="w-4 h-4 text-emerald-400 stroke-[3]" />
+                <span>{row.us}</span>
+              </div>
+              <div class="text-gray-500 sm:w-44 text-right">
+                {row.them}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Verdict Box -->
+      <div class="mt-8 p-6 rounded-2xl bg-gradient-to-r from-[#8b5cf6]/15 via-[#0e0e17] to-[#06b6d4]/15 border border-[#8b5cf6]/30">
+        <div class="flex items-center gap-2 text-white font-bold text-base mb-2">
+          <Award class="w-5 h-5 text-[#06b6d4]" />
+          <span>Konklusjon & Anbefaling</span>
+        </div>
+        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed">
+          {comp.verdict}
+        </p>
+      </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <PricingCard />
+
+    <!-- Testimonials -->
+    <UserReviewsSection />
+
+    <!-- FAQ -->
+    <FAQSection />
+
+    <!-- Final CTA -->
+    <CTASection
+      title="Opplev Hvorfor Norsk IPTV Er Testvinneren"
+      description="Bestill ditt 12-måneders VIP abonnement for kun 600 kr i dag. 24-timers refusjonsgaranti og umiddelbar aktivering."
+    />
+
+  </main>
+
+  <Footer />
+
+  <!-- Widgets -->
+  <FloatingWhatsApp />
+  <GroupsPopup />
+  <ExitPopup />
+  <SocialPopup />
+</Layout>

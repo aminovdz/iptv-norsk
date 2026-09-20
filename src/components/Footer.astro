@@ -1,0 +1,218 @@
+---
+import { 
+  Tv, 
+  MessageCircle, 
+  Send, 
+  Mail, 
+  ShieldCheck, 
+  MapPin, 
+  ExternalLink,
+  Lock,
+  Heart
+} from 'lucide-astro';
+
+const cities = [
+  { name: 'Oslo', href: '/locations/oslo' },
+  { name: 'Bergen', href: '/locations/bergen' },
+  { name: 'Trondheim', href: '/locations/trondheim' },
+  { name: 'Stavanger', href: '/locations/stavanger' },
+  { name: 'Kristiansand', href: '/locations/kristiansand' },
+  { name: 'Drammen', href: '/locations/drammen' },
+  { name: 'Tromsø', href: '/locations/tromso' },
+];
+
+const guides = [
+  { name: 'Beste IPTV Apper 2026', href: '/guides/beste-iptv-apper' },
+  { name: 'Installasjon på Smart TV', href: '/guides/smart-tv-oppsett' },
+  { name: 'Slik unngår du bufring', href: '/guides/anti-buffer-guide' },
+];
+
+const legalPages = [
+  { name: 'Personvernerklæring', href: '/privacy' },
+  { name: 'Vilkår for Bruk', href: '/terms' },
+  { name: 'Refusjonspolicy (24t)', href: '/refund' },
+  { name: 'DMCA Policy', href: '/dmca' },
+  { name: 'Ansvarsfraskrivelse', href: '/disclaimer' },
+];
+
+const landingVariants = [
+  { name: 'Hovedside', href: '/' },
+  { name: 'Premium Oversikt', href: '/landing-v2' },
+  { name: 'Nordisk Strømming', href: '/landing-v3' },
+  { name: 'Verveprogram', href: '/referral' },
+  { name: 'Kontakt Oss', href: '/contact' },
+];
+
+const whatsappUrl = "https://wa.me/18036582620";
+const whatsappChannelUrl = "https://whatsapp.com/channel/0029VayVaLpD8SE3bf8wMY3v";
+const telegramUrl = "https://t.me/castvera_com";
+---
+
+<footer class="bg-[#040408] border-t border-white/10 text-gray-400 text-sm mt-auto" aria-labelledby="footer-heading">
+  <h2 id="footer-heading" class="sr-only">Nettstedsbunntekst</h2>
+
+  <!-- Top Coverage Banner / Norway Map Graphic -->
+  <div class="border-b border-white/10 bg-white/[0.01] py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 p-6 rounded-2xl bg-[#0c0c16] border border-white/5">
+        
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-[#8b5cf6]/10 border border-[#8b5cf6]/30 flex items-center justify-center text-[#8b5cf6] shrink-0">
+            <MapPin class="w-6 h-6" />
+          </div>
+          <div>
+            <div class="text-base font-bold text-white flex items-center gap-2">
+              <span>Nasjonal Dekning i Hele Norge</span>
+              <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">100% Aktiv</span>
+            </div>
+            <p class="text-xs text-gray-400 mt-0.5">Optimale CDN-noder for Telenor, Telia, Altibox, GlobalConnect og NextGenTel bredbånd.</p>
+          </div>
+        </div>
+
+        <!-- Norwegian Cities Quick Bar -->
+        <div class="flex flex-wrap items-center gap-2">
+          {cities.map((city) => (
+            <a
+              href={city.href}
+              class="text-xs px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/5 transition-colors"
+            >
+              {city.name}
+            </a>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Footer Content -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      
+      <!-- Col 1: Brand & Contact Info -->
+      <div class="lg:col-span-2 space-y-4">
+        <a href="/" class="flex items-center gap-3" aria-label="Norsk IPTV">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#8b5cf6] to-[#06b6d4] p-[1.5px]">
+            <div class="w-full h-full bg-[#0e0e17] rounded-[10px] flex items-center justify-center">
+              <Tv class="w-4 h-4 text-[#06b6d4]" />
+            </div>
+          </div>
+          <span class="text-xl font-extrabold tracking-tight text-white">
+            Norsk<span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4]">IPTV</span>
+          </span>
+        </a>
+
+        <p class="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-sm">
+          Norges ledende leverandør av stabil <strong>IPTV Norge</strong> streaming. Uavbrutt 4K-kvalitet, overlegen oppetid og lynrask aktivering på alle dine favorittenheter.
+        </p>
+
+        <!-- Official Support Channels -->
+        <div class="space-y-2 pt-2 text-xs">
+          <div class="flex items-center gap-2">
+            <Mail class="w-4 h-4 text-[#8b5cf6] shrink-0" />
+            <span>Support:</span>
+            <a href="mailto:contact@norsk-iptv.net" class="text-gray-300 hover:text-white transition-colors">contact@norsk-iptv.net</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <Mail class="w-4 h-4 text-[#8b5cf6] shrink-0" />
+            <span>Beredskap:</span>
+            <a href="mailto:support@castvera.com" class="text-gray-300 hover:text-white transition-colors">support@castvera.com</a>
+          </div>
+        </div>
+
+        <!-- Social / Community Channels -->
+        <div class="flex items-center gap-3 pt-3">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#25D366]/15 text-[#25D366] hover:bg-[#25D366]/25 border border-[#25D366]/30 text-xs font-semibold transition-colors"
+            aria-label="WhatsApp Direkte Chat"
+          >
+            <MessageCircle class="w-3.5 h-3.5" />
+            <span>WhatsApp 24/7</span>
+          </a>
+          <a
+            href={telegramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#229ED9]/15 text-[#229ED9] hover:bg-[#229ED9]/25 border border-[#229ED9]/30 text-xs font-semibold transition-colors"
+            aria-label="Telegram Offisiell Kanal"
+          >
+            <Send class="w-3.5 h-3.5" />
+            <span>Telegram Kanal</span>
+          </a>
+          <a
+            href={whatsappChannelUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/10 text-xs transition-colors"
+            aria-label="WhatsApp Oppdateringskanal"
+          >
+            <ExternalLink class="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Navigation & Pages -->
+      <div>
+        <div class="text-xs font-bold uppercase tracking-wider text-white mb-4">Sider & Tjenester</div>
+        <ul class="space-y-2.5 text-xs">
+          {landingVariants.map((item) => (
+            <li>
+              <a href={item.href} class="hover:text-white transition-colors">
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Col 3: Local Cities SEO -->
+      <div>
+        <div class="text-xs font-bold uppercase tracking-wider text-white mb-4">Lokale Områder</div>
+        <ul class="space-y-2.5 text-xs">
+          {cities.map((city) => (
+            <li>
+              <a href={city.href} class="hover:text-white transition-colors flex items-center gap-1.5">
+                <span class="w-1 h-1 rounded-full bg-[#8b5cf6]"></span>
+                <span>IPTV {city.name}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Col 4: Juridisk & Sikkerhet -->
+      <div>
+        <div class="text-xs font-bold uppercase tracking-wider text-white mb-4">Trygghet & Vilkår</div>
+        <ul class="space-y-2.5 text-xs">
+          {legalPages.map((page) => (
+            <li>
+              <a href={page.href} class="hover:text-white transition-colors">
+                {page.name}
+              </a>
+            </li>
+          ))}
+          <li class="pt-2">
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[11px] text-gray-300">
+              <Lock class="w-3 h-3 text-[#06b6d4]" />
+              <span>256-bit SSL Kryptering</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar & Legal Disclaimer -->
+    <div class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+      <p>© {new Date().getFullYear()} Norsk IPTV (norsk-iptv.net). Alle rettigheter forbeholdt.</p>
+      
+      <p class="text-center md:text-right max-w-xl text-[11px] leading-relaxed text-gray-500">
+        Ansvarsfraskrivelse: Norsk IPTV er en uavhengig formidler av strømmeteknologiske løsninger. Vi verken kringkaster eller eier opphavsrettsbeskyttet innhold på egne servere.
+      </p>
+    </div>
+
+  </div>
+</footer>

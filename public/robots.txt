@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://norsk-iptv.net/sitemap-index.xml

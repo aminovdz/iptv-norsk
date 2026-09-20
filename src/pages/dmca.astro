@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import { ShieldCheck, FileCheck, Mail } from 'lucide-astro';
+
+const breadcrumbs = [
+  { name: 'Hjem', item: '/' },
+  { name: 'DMCA Policy', item: '/dmca' },
+];
+---
+
+<Layout
+  title="DMCA & Opphavsrett | Norsk IPTV"
+  description="DMCA-retningslinjer og varslingsprosedyrer for opphavsrett hos Norsk IPTV."
+  breadcrumbs={breadcrumbs}
+>
+  <StickyHeader />
+
+  <main class="py-16 md:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#8b5cf6]/10 border border-[#8b5cf6]/30 text-xs font-semibold text-[#a78bfa] mb-4">
+        <ShieldCheck class="w-3.5 h-3.5 text-[#06b6d4]" />
+        <span>Opphavsrett & Immaterielle Rettigheter</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+        DMCA Retningslinjer
+      </h1>
+      <p class="text-xs sm:text-sm text-gray-400">
+        Digital Millennium Copyright Act (DMCA) samsvarserklæring
+      </p>
+    </div>
+
+    <!-- Content Card -->
+    <div class="rounded-3xl bg-[#0e0e17] border border-white/10 p-8 sm:p-12 shadow-xl space-y-8 text-gray-300 text-sm sm:text-base leading-relaxed">
+      
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">1. Erklæring om Tjenestens Natur</h2>
+        <p>
+          <strong>Norsk IPTV</strong> (norsk-iptv.net) respekterer immaterielle rettigheter og opphavsrettigheter til tredjeparter. Norsk IPTV fungerer utelukkende som en teknisk formidler av indekserte strømmer og vertstilkoblinger. Vi verken kringkaster, produserer, laster opp eller lagrer medieinnhold på våre egne servere.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">2. Innsending av Varsel om Opphavsrettsbrudd (DMCA Notice)</h2>
+        <p class="mb-4">
+          Dersom du er rettighetshaver eller autorisert representant og mener at innhold tilgjengelig via våre indekserte lenker krenker dine rettigheter, vennligst send en skriftlig henvendelse med følgende informasjon:
+        </p>
+        <ul class="list-disc list-inside space-y-2 text-gray-400">
+          <li>Fysisk eller elektronisk signatur fra personen som er bemyndiget til å handle på vegne av rettighetshaveren.</li>
+          <li>Identifikasjon av det opphavsrettsbeskyttede verket som påstås å være krenket.</li>
+          <li>Identifikasjon og spesifikk URL/lokasjon for det påståtte krenkende materialet.</li>
+          <li>Fullstendig kontaktinformasjon (navn, adresse, telefonnummer og e-postadresse).</li>
+          <li>En erklæring om at du i god tro mener at bruken av materialet ikke er autorisert av opphavsrettshaveren, dennes agent eller loven.</li>
+          <li>En erklæring, under straffeansvar for mened, om at opplysningene i varselet er nøyaktige.</li>
+        </ul>
+      </section>
+
+      <section class="pt-4 border-t border-white/10">
+        <h2 class="text-xl font-bold text-white mb-3">3. Kontaktpunkt for DMCA Henvendelser</h2>
+        <p class="mb-4">
+          Vennligst send alle formelle opphavsrettsforespørsler til vårt juridiske kontaktpunkt:
+        </p>
+        <div class="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-2 font-mono text-xs sm:text-sm">
+          <div>Juridisk Avdeling: <a href="mailto:contact@norsk-iptv.net" class="text-[#8b5cf6] hover:underline">contact@norsk-iptv.net</a></div>
+          <div>Beredskapskopi: <a href="mailto:support@castvera.com" class="text-[#06b6d4] hover:underline">support@castvera.com</a></div>
+        </div>
+        <p class="text-xs text-gray-500 mt-3">
+          Vi behandler alle gyldige og fullstendige DMCA-henvendelser innen 24–48 timer på virkedager.
+        </p>
+      </section>
+
+    </div>
+
+  </main>
+
+  <Footer />
+  <FloatingWhatsApp />
+</Layout>

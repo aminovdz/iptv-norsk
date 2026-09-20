@@ -1,0 +1,141 @@
+---
+import { MessageCircle, Send, X, Bell, ShieldCheck, Sparkles, ExternalLink } from 'lucide-astro';
+
+const telegramUrl = "https://t.me/castvera_com";
+const whatsappChannelUrl = "https://whatsapp.com/channel/0029VayVaLpD8SE3bf8wMY3v";
+---
+
+<!-- Community Channels Modal Popup -->
+<div
+  id="groups-popup-modal"
+  class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="groups-popup-title"
+>
+  <div class="relative w-full max-w-md rounded-3xl bg-gradient-to-b from-[#141226] via-[#0d0d18] to-[#080811] border border-white/15 p-6 sm:p-8 shadow-2xl shadow-[#8b5cf6]/20 transform scale-95 transition-transform duration-300">
+    
+    <!-- Close Button -->
+    <button
+      type="button"
+      id="groups-popup-close"
+      class="absolute top-4 right-4 p-2 rounded-full bg-white/5 hover:bg-white/15 text-gray-400 hover:text-white border border-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-[#8b5cf6]"
+      aria-label="Lukk fellesskapsvindu"
+    >
+      <X class="w-5 h-5" />
+    </button>
+
+    <!-- Top Badge -->
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#06b6d4]/15 border border-[#06b6d4]/30 text-xs font-bold text-[#06b6d4] mb-4">
+      <Bell class="w-3.5 h-3.5" />
+      <span>NORSK IPTV OFFISIELT FELLESSKAP</span>
+    </div>
+
+    <!-- Title -->
+    <h3 id="groups-popup-title" class="text-2xl font-extrabold text-white tracking-tight leading-tight mb-2.5">
+      Bli Med i Våre <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4]">VIP Kanaler</span>
+    </h3>
+
+    <!-- Subtitle -->
+    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-6">
+      Få direkte varsler om sportsbegivenheter, serveroppdateringer, nye funksjoner og eksklusive medlemsrabatter.
+    </p>
+
+    <!-- Channels Action Buttons -->
+    <div class="space-y-3 mb-6">
+      
+      <!-- Telegram Channel Button -->
+      <a
+        href={telegramUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center justify-between p-4 rounded-2xl bg-[#229ED9]/15 hover:bg-[#229ED9]/25 border border-[#229ED9]/30 text-white transition-all group"
+      >
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-[#229ED9] flex items-center justify-center text-white shrink-0 shadow-md">
+            <Send class="w-5 h-5" />
+          </div>
+          <div class="text-left">
+            <div class="text-sm font-bold text-white group-hover:text-[#64c3f5] transition-colors">Telegram VIP Kanal</div>
+            <div class="text-[11px] text-gray-300">Live kampvarsler & serverstatus</div>
+          </div>
+        </div>
+        <ExternalLink class="w-4 h-4 text-gray-400 group-hover:text-white" />
+      </a>
+
+      <!-- WhatsApp Channel Button -->
+      <a
+        href={whatsappChannelUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center justify-between p-4 rounded-2xl bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/30 text-white transition-all group"
+      >
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-[#25D366] flex items-center justify-center text-white shrink-0 shadow-md">
+            <MessageCircle class="w-5 h-5 text-black fill-black" />
+          </div>
+          <div class="text-left">
+            <div class="text-sm font-bold text-white group-hover:text-[#5cf296] transition-colors">WhatsApp Community</div>
+            <div class="text-[11px] text-gray-300">Oppdateringer & eksklusive tilbud</div>
+          </div>
+        </div>
+        <ExternalLink class="w-4 h-4 text-gray-400 group-hover:text-white" />
+      </a>
+
+    </div>
+
+    <!-- Dismiss Text -->
+    <button
+      type="button"
+      id="groups-popup-dismiss"
+      class="w-full text-center text-xs text-gray-500 hover:text-gray-300 py-1 transition-colors"
+    >
+      Kanskje senere
+    </button>
+
+  </div>
+</div>
+
+<script>
+  const GROUPS_STORAGE_KEY = 'norsk_iptv_groups_popup_24h';
+  const groupsModal = document.getElementById('groups-popup-modal');
+  const groupsClose = document.getElementById('groups-popup-close');
+  const groupsDismiss = document.getElementById('groups-popup-dismiss');
+
+  function isGroupsShownRecently() {
+    const lastShown = localStorage.getItem(GROUPS_STORAGE_KEY);
+    if (!lastShown) return false;
+    const now = new Date().getTime();
+    return now - parseInt(lastShown, 10) < 24 * 60 * 60 * 1000;
+  }
+
+  function markGroupsAsShown() {
+    localStorage.setItem(GROUPS_STORAGE_KEY, new Date().getTime().toString());
+  }
+
+  function showGroupsModal() {
+    if (!groupsModal || isGroupsShownRecently()) return;
+    markGroupsAsShown();
+    groupsModal.classList.remove('opacity-0', 'pointer-events-none');
+    groupsModal.classList.add('opacity-100', 'pointer-events-auto');
+  }
+
+  function closeGroupsModal() {
+    if (!groupsModal) return;
+    groupsModal.classList.remove('opacity-100', 'pointer-events-auto');
+    groupsModal.classList.add('opacity-0', 'pointer-events-none');
+  }
+
+  if (groupsModal) {
+    groupsClose?.addEventListener('click', closeGroupsModal);
+    groupsDismiss?.addEventListener('click', closeGroupsModal);
+    groupsModal.addEventListener('click', (e) => {
+      if (e.target === groupsModal) closeGroupsModal();
+    });
+
+    // Show after 12 seconds on page
+    setTimeout(() => {
+      showGroupsModal();
+    }, 12000);
+  }
+</script>

@@ -1,0 +1,85 @@
+---
+import { Zap, MessageCircle, ShieldCheck, Clock, CheckCircle2, ArrowRight } from 'lucide-astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Klar for Norges Mest Pålitelige IPTV-opplevelse?",
+  description = "Oppgrader TV-kveldene dine i dag. Ingen bindingstid, ingen dyre utstyrsbokser – kun ren underholdning i 4K kvalitet på sekunder.",
+} = Astro.props;
+
+const whatsappUrl = "https://wa.me/18036582620?text=Hei!%20Jeg%20ønsker%20å%20starte%20mitt%20IPTV%20abonnement%20i%20dag.";
+---
+
+<section class="py-20 relative overflow-hidden" aria-labelledby="cta-heading">
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative rounded-3xl bg-gradient-to-br from-[#121028] via-[#0d0d1b] to-[#08121f] border border-[#8b5cf6]/30 p-8 sm:p-12 lg:p-16 shadow-2xl shadow-[#8b5cf6]/15 overflow-hidden">
+      
+      <!-- Decorative Backdrop Lights -->
+      <div class="absolute -top-24 -right-24 w-80 h-80 bg-[#8b5cf6]/25 blur-[100px] rounded-full pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-[#06b6d4]/20 blur-[100px] rounded-full pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-3xl mx-auto text-center">
+        
+        <!-- Guarantee Pill -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold text-white mb-6">
+          <ShieldCheck class="w-4 h-4 text-[#06b6d4]" />
+          <span>100% Fornøyd eller Pengene Tilbake (24t Refusjon)</span>
+        </div>
+
+        <!-- H2 Heading -->
+        <h2 id="cta-heading" class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
+          {title}
+        </h2>
+
+        <p class="text-base sm:text-lg text-gray-300 leading-relaxed mb-10">
+          {description}
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+          <a
+            href="#pricing"
+            class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 text-base font-bold rounded-2xl bg-gradient-to-r from-[#8b5cf6] to-[#7c3aed] hover:from-[#7c3aed] hover:to-[#6d28d9] text-white shadow-xl shadow-[#8b5cf6]/35 hover:shadow-[#8b5cf6]/50 transition-all duration-300 transform hover:-translate-y-0.5"
+            aria-label="Se alle IPTV planer og abonnement"
+          >
+            <span>Bestill IPTV Abonnement</span>
+            <ArrowRight class="w-5 h-5" />
+          </a>
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto flex items-center justify-center gap-3 px-7 py-4 text-base font-semibold rounded-2xl bg-white/10 hover:bg-white/15 text-white border border-white/20 hover:border-[#25D366]/50 transition-all duration-300"
+            aria-label="Snakk med vår kundeservice på WhatsApp"
+          >
+            <MessageCircle class="w-5 h-5 text-[#25D366]" />
+            <span>Chat på WhatsApp</span>
+          </a>
+        </div>
+
+        <!-- Micro Feature List -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-white/10 text-xs sm:text-sm text-gray-300">
+          <div class="flex items-center justify-center gap-2">
+            <CheckCircle2 class="w-4 h-4 text-[#06b6d4]" />
+            <span>Aktivering under 3 min</span>
+          </div>
+          <div class="flex items-center justify-center gap-2">
+            <CheckCircle2 class="w-4 h-4 text-[#06b6d4]" />
+            <span>Støtter alle Smart-TV & Apper</span>
+          </div>
+          <div class="flex items-center justify-center gap-2">
+            <CheckCircle2 class="w-4 h-4 text-[#06b6d4]" />
+            <span>Ingen automatisk fornyelse</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>

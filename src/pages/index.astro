@@ -1,0 +1,211 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Hero from '../components/Hero.astro';
+import LiveScores from '../components/LiveScores.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import PricingCard from '../components/PricingCard.astro';
+import ReferralBanner from '../components/ReferralBanner.astro';
+import UserReviewsSection from '../components/UserReviewsSection.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import SupportedDevices from '../components/SupportedDevices.astro';
+import CitiesList from '../components/CitiesList.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+
+// Interactive Marketing & Conversion Widgets
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import GroupsPopup from '../components/GroupsPopup.astro';
+import ExitPopup from '../components/ExitPopup.astro';
+import SocialPopup from '../components/SocialPopup.astro';
+
+import { Tv, Zap, ShieldCheck, CheckCircle2, Sparkles, Award, Play } from 'lucide-astro';
+
+// Breadcrumbs Schema Data
+const breadcrumbs = [
+  { name: 'Hjem', item: '/' },
+];
+
+// Product & Service Rich Snippet Schema
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Norsk IPTV Abonnement",
+  "image": "https://norsk-iptv.net/favicon.svg",
+  "description": "Norges ledende IPTV-tjeneste med overlegen 4K Ultra HD bildekvalitet, Anti-Freeze™ 9.0 servere og lynrask aktivering for alle Smart TV-er og apper.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Norsk IPTV"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "NOK",
+    "lowPrice": "90",
+    "highPrice": "600",
+    "offerCount": "4",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "12 Måneder VIP IPTV",
+        "price": "600",
+        "priceCurrency": "NOK",
+        "availability": "https://schema.org/InStock",
+        "url": "https://norsk-iptv.net/#pricing"
+      },
+      {
+        "@type": "Offer",
+        "name": "6 Måneder Pro IPTV",
+        "price": "333",
+        "priceCurrency": "NOK",
+        "availability": "https://schema.org/InStock",
+        "url": "https://norsk-iptv.net/#pricing"
+      },
+      {
+        "@type": "Offer",
+        "name": "3 Måneder Pluss IPTV",
+        "price": "222",
+        "priceCurrency": "NOK",
+        "availability": "https://schema.org/InStock",
+        "url": "https://norsk-iptv.net/#pricing"
+      },
+      {
+        "@type": "Offer",
+        "name": "1 Måned Basis IPTV",
+        "price": "90",
+        "priceCurrency": "NOK",
+        "availability": "https://schema.org/InStock",
+        "url": "https://norsk-iptv.net/#pricing"
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "1250",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+};
+---
+
+<Layout
+  title="IPTV Norge — Norges Mest Stabile IPTV Tjeneste i 4K & UHD (2026)"
+  description="Få Norges ledende IPTV leverandør med ukomprimert 4K Ultra HD kvalitet, 60 FPS og Anti-Freeze™ teknologi. Prøv Norsk IPTV nå – ingen bindingstid og 24t garanti!"
+  keywords="IPTV Norge, Norsk IPTV, Beste IPTV Norge, IPTV abonnement Norge, IPTV test Norge, Kjøpe IPTV Norge, IPTV Smart TV"
+  breadcrumbs={breadcrumbs}
+  schemaData={productSchema}
+>
+  <StickyHeader />
+
+  <main>
+    
+    <!-- 1. Hero Section (Primary KW in H1 & first 100 words) -->
+    <Hero
+      h1Text="IPTV Norge — Norges Mest Stabile IPTV Tjeneste med 4K & Anti-Buffer"
+      subtitle="Opplev en førsteklasses TV-opplevelse med Norsk IPTV. Få lynrask tilgang til direktesendt sport, underholdning og direktesendinger i krystallklar 4K Ultra HD med overlegen stabilitet på alle enheter."
+      badge="🇳🇴 Norges #1 IPTV Leverandør 2026"
+      ctaText="Se Priser & Planer"
+      ctaLink="#pricing"
+    />
+
+    <!-- Real-Time Sports LiveScores Engagement Widget -->
+    <LiveScores />
+
+    <!-- 2. Features Grid Section -->
+    <FeatureGrid />
+
+    <!-- Deep SEO Content Block (E-E-A-T Authority & 1,200-word Target Depth) -->
+    <section class="py-16 md:py-24 relative overflow-hidden bg-white/[0.01]" aria-labelledby="seo-authority-heading">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="rounded-3xl bg-[#0e0e17] border border-white/10 p-8 sm:p-12 shadow-xl space-y-8 text-gray-300 text-sm sm:text-base leading-relaxed">
+          
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8b5cf6]/10 border border-[#8b5cf6]/30 text-xs font-semibold text-[#a78bfa] mb-3">
+              <Award class="w-3.5 h-3.5 text-[#06b6d4]" />
+              <span>Markedsledende Norsk Strømmeteknologi</span>
+            </div>
+            <h2 id="seo-authority-heading" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4">
+              Hvorfor Velge <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4]">IPTV Norge</span> fra Norsk IPTV?
+            </h2>
+            <p>
+              I en digital hverdag hvor tradisjonelle kabel-TV og satellittpakker stadig øker i pris uten å tilby tilsvarende fleksibilitet, har <strong>IPTV Norge</strong> etablert seg som den foretrukne løsningen for tusenvis av norske husstander. Med et moderne <strong>IPTV abonnement i Norge</strong> får du full frihet til å strømme alt av direktesendt sport, direktesendinger, dokumentarer og serier på dine egne premisser, direkte over internett.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-white/5">
+            <div class="space-y-3">
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <Zap class="w-5 h-5 text-[#8b5cf6]" />
+                <span>Optimalisert for Norske Bredbåndsnett</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-gray-400">
+                Uansett om du er tilkoblet via fiber fra Telenor, Altibox, Telia, GlobalConnect eller 5G mobilt bredbånd, er våre ruter optimalisert med lokale CDN-punkter i Norden. Dette eliminerer unødvendige omveier over fjerne utenlandske servere og gir deg umiddelbar kanalskifting uten forsinkelser.
+              </p>
+            </div>
+
+            <div class="space-y-3">
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <Tv class="w-5 h-5 text-[#06b6d4]" />
+                <span>Ekte 4K UHD med 60 Bilder i Sekundet</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-gray-400">
+                Sport og raske scener krever høy bildefrekvens for ikke å virke uskarpe. Våre premiumstrømmer leveres i ukomprimert 60 FPS, noe som gjør at du ser hver eneste detalj i direktesendt fotball, ski og motorsport med enestående skarphet på storskjermen.
+              </p>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-white/5 space-y-3">
+            <h3 class="text-lg font-bold text-white">Full Frihet Uten Skjulte Kostnader</h3>
+            <p>
+              Hos <strong>Norsk IPTV</strong> tror vi på ærlighet og transparens. Du binder deg aldri til 12 måneders uoppsigelige avtaler med automatiske trekk. Alle våre planer er forhåndsbetalte og avsluttes automatisk dersom du ikke aktivt velger å fornye. I tillegg gir vår <strong>24-timers refusjonsgaranti</strong> deg 100% trygghet når du bestiller.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. Pricing Section (12-month prominently first) -->
+    <PricingCard />
+
+    <!-- 4. Referrer (ReferralBanner) Section -->
+    <ReferralBanner />
+
+    <!-- 5. Testimonials (UserReviewsSection) Section -->
+    <UserReviewsSection />
+
+    <!-- 6. How to Process (ProcessSteps) Section -->
+    <ProcessSteps />
+
+    <!-- 7. Supported Devices (SupportedDevices) Section -->
+    <SupportedDevices />
+
+    <!-- 8. Cities (CitiesList) Local SEO Gateway Section -->
+    <CitiesList />
+
+    <!-- 9. Contact Section -->
+    <ContactForm />
+
+    <!-- 10. FAQ Section (FAQPage Schema included) -->
+    <FAQSection />
+
+    <!-- 11. Final CTA Banner Section -->
+    <CTASection
+      title="Klar for Norges Mest Pålitelige IPTV-opplevelse?"
+      description="Bli med over 9 800 fornøyde norske seere i dag. Kom i gang på under 3 minutter med markedets beste 4K bildekvalitet."
+    />
+
+  </main>
+
+  <Footer />
+
+  <!-- Interactive Conversion Widgets -->
+  <FloatingWhatsApp />
+  <GroupsPopup />
+  <ExitPopup />
+  <SocialPopup />
+</Layout>

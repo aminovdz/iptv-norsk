@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Hero from '../components/Hero.astro';
+import LiveScores from '../components/LiveScores.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import PricingCard from '../components/PricingCard.astro';
+import ReferralBanner from '../components/ReferralBanner.astro';
+import UserReviewsSection from '../components/UserReviewsSection.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import SupportedDevices from '../components/SupportedDevices.astro';
+import CitiesList from '../components/CitiesList.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+
+// Conversion Widgets
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import GroupsPopup from '../components/GroupsPopup.astro';
+import ExitPopup from '../components/ExitPopup.astro';
+import SocialPopup from '../components/SocialPopup.astro';
+
+import { Trophy, Zap, ShieldCheck, Flame, Star, Award } from 'lucide-astro';
+
+const breadcrumbs = [
+  { name: 'Hjem', item: '/' },
+  { name: 'Beste IPTV Norge', item: '/landing-v2' },
+];
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Beste IPTV Norge — Premium 4K Strømming",
+  "image": "https://norsk-iptv.net/favicon.svg",
+  "description": "Kåret til beste IPTV i Norge for direktesendt sport og 4K underholdning med 99.9% stabil serveroppetid og lynrask support.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Norsk IPTV"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "NOK",
+    "lowPrice": "90",
+    "highPrice": "600",
+    "offerCount": "4"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "1250"
+  }
+};
+---
+
+<Layout
+  title="Beste IPTV Norge 2026 — Testvinner for 4K Sport & Serier"
+  description="Leter du etter den beste IPTV-leverandøren i Norge? Norsk IPTV leverer uovertruffen 4K bildekvalitet, 60fps sport og lynrask aktivering. Bestill i dag!"
+  keywords="Beste IPTV Norge, IPTV test Norge, Norsk IPTV, IPTV abonnement, IPTV kanaler, stabil IPTV Norge"
+  breadcrumbs={breadcrumbs}
+  schemaData={productSchema}
+>
+  <StickyHeader />
+
+  <main>
+    
+    <!-- 1. Hero Section (Variant 2 Focus on Test Winner & Sport) -->
+    <Hero
+      h1Text="Beste IPTV Norge — Uavbrutt 4K Sport & Underholdning Uten Bufring"
+      subtitle="Bli med tusenvis av kresne TV-seere som har kåret Norsk IPTV til den beste IPTV-tjenesten i Norge. Få stabil 4K-strømming med Anti-Freeze™ teknologi og full EPG programguide."
+      badge="🏆 Best i Test IPTV Norge 2026"
+      ctaText="Få Best i Test Pris (Fra 50 kr/md)"
+      ctaLink="#pricing"
+    />
+
+    <!-- Sports LiveScores Real-Time Tracker -->
+    <LiveScores />
+
+    <!-- 2. Features Grid Section -->
+    <FeatureGrid />
+
+    <!-- Editorial Deep-Dive Block (E-E-A-T Comparison Authority) -->
+    <section class="py-16 md:py-24 relative overflow-hidden bg-white/[0.01]" aria-labelledby="comparison-authority-heading">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="rounded-3xl bg-[#0e0e17] border border-white/10 p-8 sm:p-12 shadow-xl space-y-8 text-gray-300 text-sm sm:text-base leading-relaxed">
+          
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-400 mb-3">
+              <Trophy class="w-3.5 h-3.5" />
+              <span>Kåret til Beste IPTV Valg i Norge</span>
+            </div>
+            <h2 id="comparison-authority-heading" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4">
+              Hva Kjennetegner den <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4]">Beste IPTV-opplevelsen</span>?
+            </h2>
+            <p>
+              Når du skal velge leverandør av <strong>IPTV i Norge</strong>, er stabilitet under direktesendte storkamper det aller viktigste kriteriet. Mange billige leverandører overbelaster serverne sine, noe som resulterer i irriterende bufring og forsinkelser akkurat når spenningen er på sitt høyeste. <strong>Norsk IPTV</strong> skiller seg ut ved å benytte dedikerte serverklynger med intelligent lastbalansering.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-4 border-t border-white/5">
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-2">
+              <span class="text-xs font-bold text-[#8b5cf6] uppercase tracking-wider block">01. Bildekvalitet</span>
+              <div class="text-sm font-bold text-white">Ekte 4K & 60 FPS</div>
+              <p class="text-xs text-gray-400">Ingen kompresjon eller pikselering under raske bevegelser i sport og actionfilmer.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-2">
+              <span class="text-xs font-bold text-[#06b6d4] uppercase tracking-wider block">02. Leveringstid</span>
+              <div class="text-sm font-bold text-white">Under 3 Minutter</div>
+              <p class="text-xs text-gray-400">Automatisert system som sender dine M3U- og Xtream-koder rett til din WhatsApp eller e-post.</p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-2">
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">03. Trygghet</span>
+              <div class="text-sm font-bold text-white">24t Fornøydgaranti</div>
+              <p class="text-xs text-gray-400">Fult risikofri bestilling med vår 24-timers refusjonspolicy for alle nye kunder.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. Pricing Section (12-month prominently first) -->
+    <PricingCard />
+
+    <!-- 4. Referrer (ReferralBanner) Section -->
+    <ReferralBanner />
+
+    <!-- 5. Testimonials (UserReviewsSection) Section -->
+    <UserReviewsSection />
+
+    <!-- 6. How to Process (ProcessSteps) Section -->
+    <ProcessSteps />
+
+    <!-- 7. Supported Devices (SupportedDevices) Section -->
+    <SupportedDevices />
+
+    <!-- 8. Cities (CitiesList) Section -->
+    <CitiesList />
+
+    <!-- 9. Contact Section -->
+    <ContactForm />
+
+    <!-- 10. FAQ Section -->
+    <FAQSection />
+
+    <!-- 11. Final CTA Banner Section -->
+    <CTASection
+      title="Bli Med på Norges Beste TV-opplevelse i Dag!"
+      description="Opplev hvorfor tusenvis av nordmenn velger Norsk IPTV for 4K sport og underholdning. Bestill ditt forhåndsbetalte abonnement nå."
+    />
+
+  </main>
+
+  <Footer />
+
+  <!-- Interactive Conversion Widgets -->
+  <FloatingWhatsApp />
+  <GroupsPopup />
+  <ExitPopup />
+  <SocialPopup />
+</Layout>

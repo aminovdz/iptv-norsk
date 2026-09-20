@@ -1,0 +1,146 @@
+---
+import { Star, ShieldCheck, CheckCircle, ThumbsUp, Quote, Sparkles } from 'lucide-astro';
+
+const reviews = [
+  {
+    name: "Henrik Mathisen",
+    location: "Oslo",
+    device: "Samsung 65\" Smart TV / TiviMate",
+    plan: "12 Måneder VIP",
+    rating: 5,
+    date: "For 2 dager siden",
+    title: "Endelig en IPTV-tjeneste som aldri hakker!",
+    comment: "Har prøvd 3 forskjellige leverandører tidligere som sviktet totalt under storkamper. Med Norsk IPTV har jeg ikke opplevd et eneste sekund bufring. Bildekvaliteten på 4K er helt suveren!"
+  },
+  {
+    name: "Silje Kristoffersen",
+    location: "Bergen",
+    device: "Apple TV 4K",
+    plan: "12 Måneder VIP",
+    rating: 5,
+    date: "For 4 dager siden",
+    title: "Fantastisk kundeservice på WhatsApp",
+    comment: "Fikk kjempegod hjelp til å sette opp spillelisten på min Apple TV via WhatsApp på under fem minutter. Veldig ryddig og oversiktlig EPG guide. Anbefales på det varmeste!"
+  },
+  {
+    name: "Marius Solberg",
+    location: "Trondheim",
+    device: "Amazon Firestick 4K Max",
+    plan: "6 Måneder Pro",
+    rating: 5,
+    date: "For 1 uke siden",
+    title: "Mye for pengene og lynrask aktivering",
+    comment: "600 kr for et helt år er latterlig billig sammenlignet med tradisjonelle TV-pakker. Fungerer perfekt på Altibox fiberlinja mi i Trondheim. 10/10."
+  },
+  {
+    name: "Espen Johannessen",
+    location: "Stavanger",
+    device: "LG OLED (webOS) / IBO Player",
+    plan: "12 Måneder VIP",
+    rating: 5,
+    date: "For 2 uker siden",
+    title: "Perfekt for vintersport og direktesendt fotball",
+    comment: "Flyten på 60 FPS gjør en enorm forskjell på skisport og fotballsendinger. Ingen forsinkelser eller dårlig oppløsning. Kommer definitivt til å fornye."
+  },
+  {
+    name: "Camilla Lind",
+    location: "Kristiansand",
+    device: "iPad & Smart TV",
+    plan: "12 Måneder VIP",
+    rating: 5,
+    date: "For 3 uker siden",
+    title: "Enkel å bruke for hele familien",
+    comment: "Utrolig praktisk med TV-arkiv og reprisefunksjon når barna vil se favorittprogrammene sine. Oppsettet var lekende lett."
+  },
+  {
+    name: "Jonas Bakke",
+    location: "Tromsø",
+    device: "Sony Android TV",
+    plan: "3 Måneder Pluss",
+    rating: 5,
+    date: "For 1 måned siden",
+    title: "Overraskende stabil helt her oppe i nord",
+    comment: "Testet først 3 måneder for å sjekke stabiliteten i Tromsø, og ble så imponert at jeg nettopp oppgraderte til årsabonnementet. Topp kvalitet!"
+  }
+];
+---
+
+<section id="reviews" class="py-20 md:py-28 relative overflow-hidden" aria-labelledby="reviews-heading">
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#8b5cf6]/10 border border-[#8b5cf6]/30 text-xs font-semibold text-[#a78bfa] mb-4">
+        <Sparkles class="w-3.5 h-3.5 text-[#06b6d4]" />
+        <span>Ekte Norske Kundeopplevelser</span>
+      </div>
+      <h2 id="reviews-heading" class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6">
+        Hva Sier Våre <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4]">Fornøyde Kunder</span> i Norge?
+      </h2>
+      
+      <!-- Aggregate Trust Bar -->
+      <div class="inline-flex flex-wrap items-center justify-center gap-3 p-3 px-6 rounded-2xl bg-[#0e0e17] border border-white/10 text-xs sm:text-sm">
+        <div class="flex items-center gap-1 text-amber-400">
+          <Star class="w-4 h-4 fill-current" />
+          <Star class="w-4 h-4 fill-current" />
+          <Star class="w-4 h-4 fill-current" />
+          <Star class="w-4 h-4 fill-current" />
+          <Star class="w-4 h-4 fill-current" />
+        </div>
+        <span class="font-extrabold text-white">4.9 av 5 stjerner</span>
+        <span class="text-gray-500">•</span>
+        <span class="text-gray-300 font-medium">Basert på over 1 250+ verifiserte anmeldelser i Norge</span>
+      </div>
+    </div>
+
+    <!-- Reviews Grid (3 columns) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {reviews.map((review) => (
+        <div class="rounded-3xl bg-[#0e0e17] border border-white/10 hover:border-[#8b5cf6]/30 p-7 transition-all duration-300 flex flex-col justify-between shadow-lg hover:shadow-xl">
+          
+          <div>
+            <!-- Stars & Verified Badge -->
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-1 text-amber-400">
+                {[...Array(review.rating)].map(() => (
+                  <Star class="w-3.5 h-3.5 fill-current" />
+                ))}
+              </div>
+              <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-semibold">
+                <CheckCircle class="w-3 h-3" />
+                <span>Verifisert Kjøp</span>
+              </div>
+            </div>
+
+            <!-- Review Title -->
+            <h3 class="text-base font-bold text-white mb-2.5 leading-snug">
+              "{review.title}"
+            </h3>
+
+            <!-- Review Text -->
+            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-6">
+              {review.comment}
+            </p>
+          </div>
+
+          <!-- Reviewer Footer Info -->
+          <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs">
+            <div>
+              <div class="font-bold text-white">{review.name}</div>
+              <div class="text-[11px] text-gray-500">{review.location} • {review.device}</div>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-white/5 text-[#a78bfa] block mb-1">
+                {review.plan}
+              </span>
+              <span class="text-[10px] text-gray-500">{review.date}</span>
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

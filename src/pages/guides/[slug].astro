@@ -1,0 +1,246 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StickyHeader from '../../components/StickyHeader.astro';
+import Footer from '../../components/Footer.astro';
+import FloatingWhatsApp from '../../components/FloatingWhatsApp.astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { Calendar, Clock, User, ArrowLeft, ArrowRight, Sparkles, MessageCircle, ShieldCheck, Zap } from 'lucide-astro';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((guide) => ({
+    params: { slug: guide.id },
+    props: { guide },
+  }));
+}
+
+interface Props {
+  guide: CollectionEntry<'guides'>;
+}
+
+const { guide } = Astro.props;
+const { Content } = await render(guide);
+
+const breadcrumbs = [
+  { name: 'Hjem', item: '/' },
+  { name: 'Guider', item: '/guides' },
+  { name: guide.data.title, item: `/guides/${guide.id}` },
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": guide.data.title,
+  "description": guide.data.description,
+  "datePublished": guide.data.pubDate.toISOString(),
+  "dateModified": (guide.data.updatedDate || guide.data.pubDate).toISOString(),
+  "author": {
+    "@type": "Person",
+    "name": guide.data.author || "Norsk IPTV Redaksjon"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Norsk IPTV",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://norsk-iptv.net/favicon.svg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://norsk-iptv.net/guides/${guide.id}`
+  }
+};
+---
+
+<Layout
+  title={`${guide.data.title} | Norsk IPTV`}
+  description={guide.data.description}
+  article={true}
+  publishedTime={guide.data.pubDate.toISOString()}
+  breadcrumbs={breadcrumbs}
+  schemaData={articleSchema}
+>
+  <StickyHeader />
+
+  <main class="py-12 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Back Link -->
+      <div class="mb-8">
+        <a
+          href="/guides"
+          class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-400 hover:text-white transition-colors"
+        >
+          <ArrowLeft class="w-4 h-4" />
+          <span>Tilbake til alle guider</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Main Article Column (8 cols) -->
+        <article class="lg:col-span-8">
+          
+          <!-- Article Header -->
+          <header class="mb-10">
+            
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8b5cf6]/10 border border-[#8b5cf6]/30 text-xs font-semibold text-[#a78bfa] mb-4">
+              <Sparkles class="w-3.5 h-3.5 text-[#06b6d4]" />
+              <span>IPTV Guide & Veiledning</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.2] mb-6">
+              {guide.data.title}
+            </h1>
+
+            <p class="text-base sm:text-lg text-gray-300 leading-relaxed mb-6">
+              {guide.data.description}
+            </p>
+
+            <!-- Metadata Row -->
+            <div class="flex flex-wrap items-center gap-6 py-4 border-y border-white/10 text-xs sm:text-sm text-gray-400">
+              <div class="flex items-center gap-2">
+                <User class="w-4 h-4 text-[#8b5cf6]" />
+                <span class="text-gray-200">{guide.data.author || 'Norsk IPTV Redaksjon'}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <Calendar class="w-4 h-4 text-[#06b6d4]" />
+                <span>Publisert: {guide.data.pubDate.toLocaleDateString('nb-NO', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <Clock class="w-4 h-4 text-emerald-400" />
+                <span>{guide.data.readTime || '6 min lesing'}</span>
+              </div>
+            </div>
+
+          </header>
+
+          <!-- Rendered Markdown Content with High Readability Styling -->
+          <div class="prose prose-invert max-w-none space-y-6 text-gray-300 leading-relaxed text-base sm:text-lg [&>h2]:text-2xl [&>h2]:sm:text-3xl [&>h2]:font-bold [&>h2]:text-white [&>h2]:tracking-tight [&>h2]:mt-12 [&>h2]:mb-4 [&>h2]:pt-6 [&>h2]:border-t [&>h2]:border-white/10 [&>h3]:text-xl [&>h3]:sm:text-2xl [&>h3]:font-bold [&>h3]:text-[#a78bfa] [&>h3]:mt-8 [&>h3]:mb-3 [&>p]:mb-5 [&>p]:leading-relaxed [&>ul]:list-disc [&>ul]:list-inside [&>ul]:space-y-2 [&>ul]:mb-6 [&>ul]:text-gray-300 [&>ol]:list-decimal [&>ol]:list-inside [&>ol]:space-y-2 [&>ol]:mb-6 [&>blockquote]:border-l-4 [&>blockquote]:border-[#8b5cf6] [&>blockquote]:pl-4 [&>blockquote]:py-2 [&>blockquote]:bg-white/[0.02] [&>blockquote]:rounded-r-xl [&>blockquote]:italic [&>strong]:text-white">
+            <Content />
+          </div>
+
+          <!-- Bottom Promotional Banner in Article -->
+          <div class="mt-14 p-8 rounded-3xl bg-gradient-to-br from-[#181432] via-[#0f0e1d] to-[#08121f] border border-[#8b5cf6]/40 shadow-2xl">
+            <div class="flex items-center gap-2 text-xs font-bold text-[#c084fc] uppercase tracking-wider mb-2">
+              <ShieldCheck class="w-4 h-4 text-emerald-400" />
+              <span>TESTVINNER 2026</span>
+            </div>
+            <h3 class="text-2xl font-extrabold text-white mb-2">Klar for en feilfri TV-opplevelse?</h3>
+            <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-6">
+              Opplev Norges mest stabile IPTV-løsning med 4K Ultra HD og Anti-Freeze™ 9.0. Start for kun 600 kr for 12 måneder med 24-timers refusjonsgaranti.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a
+                href="/#pricing"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4] text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#8b5cf6]/30"
+              >
+                <span>Bestill IPTV Abonnement</span>
+                <ArrowRight class="w-4 h-4" />
+              </a>
+              <a
+                href="https://wa.me/18036582620"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 text-xs font-semibold"
+              >
+                <MessageCircle class="w-4 h-4 text-[#25D366]" />
+                <span>Test på WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- Sticky Sidebar Column (4 cols) -->
+        <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-28">
+          
+          <!-- Quick Buy Plan Card -->
+          <div class="rounded-3xl bg-[#0e0e17] border border-[#8b5cf6]/40 p-6 shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-[#8b5cf6]/15 blur-[60px] rounded-full pointer-events-none"></div>
+
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#8b5cf6]/20 text-[#c084fc] text-[11px] font-extrabold uppercase tracking-wider mb-4">
+              <span>BESTE VERDI</span>
+            </div>
+
+            <h4 class="text-xl font-bold text-white mb-1">12 Måneder VIP IPTV</h4>
+            <p class="text-xs text-gray-400 mb-4">Uavbrutt 4K sport & underholdning</p>
+
+            <div class="mb-6 pb-4 border-b border-white/10">
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-4xl font-black text-white">600 kr</span>
+                <span class="text-xs text-gray-400">/ ~€55</span>
+              </div>
+              <span class="text-xs text-[#06b6d4] font-semibold mt-0.5 block">Kun 50 kr per måned</span>
+            </div>
+
+            <ul class="space-y-2.5 mb-6 text-xs text-gray-300">
+              <li class="flex items-center gap-2">
+                <Zap class="w-3.5 h-3.5 text-[#06b6d4]" />
+                <span>Anti-Freeze™ 9.0 Serverlinje</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <Zap class="w-3.5 h-3.5 text-[#06b6d4]" />
+                <span>60 FPS 4K Ultra HD</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <ShieldCheck class="w-3.5 h-3.5 text-emerald-400" />
+                <span>24 timers full fornøydgaranti</span>
+              </li>
+            </ul>
+
+            <a
+              href="https://wa.me/18036582620?text=Hei!%20Jeg%20leste%20guiden%20og%20ønsker%20å%20bestille%2012%20Måneder%20VIP."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4] text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#8b5cf6]/30 transition-all hover:scale-[1.02]"
+            >
+              <MessageCircle class="w-4 h-4" />
+              <span>Bestill via WhatsApp</span>
+            </a>
+          </div>
+
+          <!-- Quick Navigation Box -->
+          <div class="rounded-3xl bg-[#0e0e17] border border-white/10 p-6">
+            <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Populære Sider</h4>
+            <ul class="space-y-3 text-xs">
+              <li>
+                <a href="/#pricing" class="text-gray-300 hover:text-[#8b5cf6] transition-colors flex items-center justify-between">
+                  <span>Priser & Planer</span>
+                  <ArrowRight class="w-3.5 h-3.5 text-gray-500" />
+                </a>
+              </li>
+              <li>
+                <a href="/compare/norsk-iptv-vs-nordicprime" class="text-gray-300 hover:text-[#8b5cf6] transition-colors flex items-center justify-between">
+                  <span>Norsk IPTV vs Nordic Prime</span>
+                  <ArrowRight class="w-3.5 h-3.5 text-gray-500" />
+                </a>
+              </li>
+              <li>
+                <a href="/locations/oslo" class="text-gray-300 hover:text-[#8b5cf6] transition-colors flex items-center justify-between">
+                  <span>IPTV i Oslo</span>
+                  <ArrowRight class="w-3.5 h-3.5 text-gray-500" />
+                </a>
+              </li>
+              <li>
+                <a href="/referral" class="text-gray-300 hover:text-[#8b5cf6] transition-colors flex items-center justify-between">
+                  <span>Verveprogram (Få gratis måned)</span>
+                  <ArrowRight class="w-3.5 h-3.5 text-gray-500" />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </aside>
+
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+  <FloatingWhatsApp />
+</Layout>

@@ -1,0 +1,245 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StickyHeader from '../../components/StickyHeader.astro';
+import Hero from '../../components/Hero.astro';
+import LiveScores from '../../components/LiveScores.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import PricingCard from '../../components/PricingCard.astro';
+import ReferralBanner from '../../components/ReferralBanner.astro';
+import UserReviewsSection from '../../components/UserReviewsSection.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import SupportedDevices from '../../components/SupportedDevices.astro';
+import CitiesList from '../../components/CitiesList.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+import FloatingWhatsApp from '../../components/FloatingWhatsApp.astro';
+import GroupsPopup from '../../components/GroupsPopup.astro';
+import ExitPopup from '../../components/ExitPopup.astro';
+import SocialPopup from '../../components/SocialPopup.astro';
+
+import { MapPin, Zap, ShieldCheck, Wifi, Award, CheckCircle2, Server } from 'lucide-astro';
+
+export async function getStaticPaths() {
+  const cities = [
+    {
+      slug: 'oslo',
+      name: 'Oslo',
+      region: 'Østlandet & Hovedstadsregionen',
+      population: '700 000+',
+      latency: '< 8ms CDN',
+      isps: 'Telenor, Telia, GlobalConnect og Viken Fiber',
+      description: 'Som Norges største by har Oslo det tetteste fibernettverket i landet. Våre lokale datasenter-noder i Oslo-regionen gir minimal responstid og 100% bufferfri 4K strømming for alle innbyggere i Oslo og omegn.'
+    },
+    {
+      slug: 'bergen',
+      name: 'Bergen',
+      region: 'Vestland',
+      population: '290 000+',
+      latency: '< 11ms CDN',
+      isps: 'Eviny / BKK, Telenor og Telia bredbånd',
+      description: 'I Bergen og Vestland fylke er pålitelighet nøkkelen. Våre vestlandske CDN-servere sikrer at du kan strømme direktesendt sport og underholdning i 4K uten avbrudd, selv under krevende værforhold og høy belastning.'
+    },
+    {
+      slug: 'trondheim',
+      name: 'Trondheim',
+      region: 'Trøndelag',
+      population: '210 000+',
+      latency: '< 13ms CDN',
+      isps: 'NTE Fiber, Telenor og Altibox',
+      description: 'I teknologihovedstaden Trondheim forventer seerne det ypperste av strømmekvalitet. Norsk IPTV leverer ukomprimert 60 FPS og lav ping for alle husstander i Trøndelag.'
+    },
+    {
+      slug: 'stavanger',
+      name: 'Stavanger',
+      region: 'Rogaland & Sør-Vestlandet',
+      population: '145 000+',
+      latency: '< 10ms CDN',
+      isps: 'Lyse / Altibox, Telenor og Telia',
+      description: 'Stavanger og Rogaland er kjent for sitt solide Altibox-nett. Våre serverlinjer er spesialtilpasset fiberstrukturen i Stavanger og Sandnes for krystallklar bildekvalitet.'
+    },
+    {
+      slug: 'kristiansand',
+      name: 'Kristiansand',
+      region: 'Agder & Sørlandet',
+      population: '115 000+',
+      latency: '< 9ms CDN',
+      isps: 'Agder Energi / Altibox, Telenor og Telia',
+      description: 'Sørlandets største by Kristiansand har direkte høyhastighetsruting til våre nordiske klynger, noe som gir feilfri 4K-opplevelse for direktesendinger og filmer.'
+    },
+    {
+      slug: 'drammen',
+      name: 'Drammen',
+      region: 'Buskerud & Viken',
+      population: '103 000+',
+      latency: '< 8ms CDN',
+      isps: 'Viken Fiber, Telenor og GlobalConnect',
+      description: 'Drammen nyter godt av umiddelbar nærhet til våre primære noder på Østlandet med lynrask responstid på under 8 millisekunder.'
+    },
+    {
+      slug: 'tromso',
+      name: 'Tromsø',
+      region: 'Troms & Nord-Norge',
+      population: '78 000+',
+      latency: '< 18ms CDN',
+      isps: 'Troms Kraft Fiber, Signal Bredbånd og Telenor',
+      description: 'Nordens Paris krever en robust strømmetjeneste som takler store avstander. Våre nord-norske serverreléer sikrer stabil 4K-kvalitet uansett hvor i Troms du befinner deg.'
+    }
+  ];
+
+  return cities.map((city) => ({
+    params: { city: city.slug },
+    props: { city },
+  }));
+}
+
+const { city } = Astro.props;
+
+const breadcrumbs = [
+  { name: 'Hjem', item: '/' },
+  { name: 'Byer & Lokasjoner', item: '/#cities' },
+  { name: `IPTV ${city.name}`, item: `/locations/${city.slug}` },
+];
+
+// LocalBusiness & Product Schema for Local SEO
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `https://norsk-iptv.net/locations/${city.slug}#localbusiness`,
+  "name": `Norsk IPTV ${city.name}`,
+  "image": "https://norsk-iptv.net/favicon.svg",
+  "url": `https://norsk-iptv.net/locations/${city.slug}`,
+  "telephone": "+18036582620",
+  "priceRange": "90 NOK - 600 NOK",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": city.name,
+    "addressRegion": city.region,
+    "addressCountry": "NO"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "addressCountry": "NO"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "240"
+  }
+};
+---
+
+<Layout
+  title={`IPTV ${city.name} — Beste IPTV Tjeneste i ${city.name} (4K & Anti-Buffer 2026)`}
+  description={`Leter du etter stabil IPTV i ${city.name}? Norsk IPTV leverer ukomprimert 4K Ultra HD med overlegen stabilitet tilpasset bredbånd i ${city.name} (${city.latency}).`}
+  keywords={`IPTV ${city.name}, Norsk IPTV ${city.name}, Beste IPTV ${city.name}, IPTV abonnement ${city.name}, IPTV leverandør ${city.name}`}
+  breadcrumbs={breadcrumbs}
+  schemaData={localBusinessSchema}
+>
+  <StickyHeader />
+
+  <main>
+    
+    <!-- 1. Localized Hero Section -->
+    <Hero
+      city={city.name}
+      h1Text={`IPTV ${city.name} — Norges Mest Stabile IPTV Tjeneste i 4K`}
+      subtitle={`Opplev markedets råeste IPTV-løsning i ${city.name} (${city.region}). Våre dedikerte lokale CDN-servere gir deg uavbrutt 4K Ultra HD streaming og 60 FPS sport tilpasset ${city.isps}.`}
+      badge={`🇳🇴 Optimalisert for ${city.name} (${city.latency})`}
+      ctaText={`Bestill IPTV for ${city.name}`}
+      ctaLink="#pricing"
+    />
+
+    <!-- Real-Time Sports LiveScores -->
+    <LiveScores />
+
+    <!-- 2. Features Grid Section -->
+    <FeatureGrid />
+
+    <!-- Local SEO Geo-Targeted Infrastructure Card -->
+    <section class="py-16 md:py-24 relative overflow-hidden bg-white/[0.01]" aria-labelledby="local-geo-heading">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="rounded-3xl bg-[#0e0e17] border border-white/10 p-8 sm:p-12 shadow-xl space-y-8 text-gray-300 text-sm sm:text-base leading-relaxed">
+          
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8b5cf6]/10 border border-[#8b5cf6]/30 text-xs font-semibold text-[#a78bfa] mb-3">
+              <MapPin class="w-3.5 h-3.5 text-[#06b6d4]" />
+              <span>Lokal Nettverksoptimalisering for {city.name}</span>
+            </div>
+            <h2 id="local-geo-heading" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4">
+              Hvordan Fungerer <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4]">IPTV i {city.name}</span>?
+            </h2>
+            <p>
+              {city.description} Enten du bor i sentrum av {city.name} eller i omkringliggende distrikter i {city.region}, er vårt nettverk konfigurert for å gi deg markedets mest pålitelige <strong>IPTV abonnement</strong>.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-white/5">
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/5">
+              <span class="text-xs text-gray-400 block mb-1">Beregnet Latens:</span>
+              <div class="text-base font-bold text-emerald-400 font-mono">{city.latency}</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/5">
+              <span class="text-xs text-gray-400 block mb-1">Støttede Nettverk:</span>
+              <div class="text-xs font-bold text-white leading-tight">{city.isps}</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/5">
+              <span class="text-xs text-gray-400 block mb-1">Serverdekning:</span>
+              <div class="text-base font-bold text-[#a78bfa]">100% Aktiv Node</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. Pricing Section (12-month prominently first) -->
+    <PricingCard />
+
+    <!-- 4. Referrer (ReferralBanner) Section -->
+    <ReferralBanner />
+
+    <!-- 5. Testimonials (UserReviewsSection) Section -->
+    <UserReviewsSection />
+
+    <!-- 6. How to Process (ProcessSteps) Section -->
+    <ProcessSteps />
+
+    <!-- 7. Supported Devices (SupportedDevices) Section -->
+    <SupportedDevices />
+
+    <!-- 8. Cities (CitiesList) Section -->
+    <CitiesList />
+
+    <!-- 9. Contact Section -->
+    <ContactForm />
+
+    <!-- 10. FAQ Section -->
+    <FAQSection />
+
+    <!-- 11. Final CTA Banner Section -->
+    <CTASection
+      title={`Klar for Norges Mest Pålitelige IPTV i ${city.name}?`}
+      description={`Bestill ditt IPTV-abonnement for ${city.name} i dag. Ingen bindingstid, lynrask aktivering og 24-timers full refusjonsgaranti.`}
+    />
+
+  </main>
+
+  <Footer />
+
+  <!-- Conversion Widgets -->
+  <FloatingWhatsApp />
+  <GroupsPopup />
+  <ExitPopup />
+  <SocialPopup />
+</Layout>

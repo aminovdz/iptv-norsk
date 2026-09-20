@@ -1,0 +1,128 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import '../styles/global.css';
+
+interface BreadcrumbItem {
+  name: string;
+  item: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  schemaData?: Record<string, any> | Array<Record<string, any>>;
+  breadcrumbs?: BreadcrumbItem[];
+  article?: boolean;
+  publishedTime?: string;
+  keywords?: string;
+}
+
+const {
+  title,
+  description,
+  image = '/images/og-norsk-iptv.svg',
+  schemaData,
+  breadcrumbs,
+  article = false,
+  publishedTime,
+  keywords,
+} = Astro.props;
+
+const siteUrl = 'https://norsk-iptv.net';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl).toString();
+
+// Base Organization Schema
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${siteUrl}/#organization`,
+  "name": "Norsk IPTV",
+  "url": siteUrl,
+  "logo": `${siteUrl}/favicon.svg`,
+  "email": "contact@norsk-iptv.net",
+  "sameAs": [
+    "https://t.me/castvera_com",
+    "https://whatsapp.com/channel/0029VayVaLpD8SE3bf8wMY3v"
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "telephone": "+18036582620",
+      "url": "https://wa.me/18036582620",
+      "email": "support@castvera.com",
+      "availableLanguage": ["Norwegian", "English"]
+    }
+  ]
+};
+
+// Base Breadcrumb Schema
+const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": breadcrumbs.map((bc, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": bc.name,
+    "item": bc.item.startsWith('http') ? bc.item : `${siteUrl}${bc.item}`
+  }))
+} : {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Hjem",
+      "item": siteUrl
+    }
+  ]
+};
+
+// Combine all schemas into a clean array
+const schemasToInject = [organizationSchema, breadcrumbSchema];
+if (schemaData) {
+  if (Array.isArray(schemaData)) {
+    schemasToInject.push(...schemaData);
+  } else {
+    schemasToInject.push(schemaData);
+  }
+}
+---
+
+<!doctype html>
+<html lang="nb">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      article={article}
+      publishedTime={publishedTime}
+      keywords={keywords}
+    />
+
+    <!-- Dynamic Brand CSS Variables Mapping -->
+    <style is:global>
+      :root {
+        --color-primary: #8b5cf6;
+        --color-primary-hover: #7c3aed;
+        --color-secondary: #06b6d4;
+        --color-secondary-hover: #0891b2;
+        --color-bg-dark: #06060b;
+        --color-bg-card: #0e0e17;
+        --color-text-main: #f3f4f6;
+        --color-text-muted: #9ca3af;
+      }
+    </style>
+
+    <!-- Base JSON-LD Structured Data -->
+    {schemasToInject.map((schema) => (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+    ))}
+  </head>
+  <body class="bg-[#06060b] text-[#f3f4f6] font-['Plus_Jakarta_Sans',sans-serif] antialiased selection:bg-[#8b5cf6] selection:text-white flex flex-col min-h-screen">
+    <slot />
+  </body>
+</html>

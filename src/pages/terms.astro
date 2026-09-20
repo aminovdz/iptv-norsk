@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import { Scale, CheckCircle2, AlertCircle, ShieldCheck } from 'lucide-astro';
+
+const breadcrumbs = [
+  { name: 'Hjem', item: '/' },
+  { name: 'Brukervilkår', item: '/terms' },
+];
+---
+
+<Layout
+  title="Brukervilkår | Norsk IPTV"
+  description="Les våre generelle vilkår for kjøp og bruk av Norsk IPTV abonnement og strømmetjenester."
+  breadcrumbs={breadcrumbs}
+>
+  <StickyHeader />
+
+  <main class="py-16 md:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#8b5cf6]/10 border border-[#8b5cf6]/30 text-xs font-semibold text-[#a78bfa] mb-4">
+        <Scale class="w-3.5 h-3.5 text-[#06b6d4]" />
+        <span>Avtaler & Vilkår</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+        Vilkår for Bruk
+      </h1>
+      <p class="text-xs sm:text-sm text-gray-400">
+        Gjeldende fra: {new Date().toLocaleDateString('nb-NO', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </p>
+    </div>
+
+    <!-- Content Card -->
+    <div class="rounded-3xl bg-[#0e0e17] border border-white/10 p-8 sm:p-12 shadow-xl space-y-8 text-gray-300 text-sm sm:text-base leading-relaxed">
+      
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">1. Aksept av Vilkår</h2>
+        <p>
+          Ved å bestille et abonnement, opprette en prøveperiode eller benytte tjenestene levert av <strong>Norsk IPTV</strong> (norsk-iptv.net), bekrefter du at du har lest, forstått og samtykker til å være bundet av disse brukervilkårene.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">2. Tjenestebeskrivelse & Forhåndsbetaling</h2>
+        <p class="mb-3">
+          Norsk IPTV tilbyr forhåndsbetalte (prepaid) digitale abonnementer for strømming av TV-innhold. 
+        </p>
+        <ul class="list-disc list-inside space-y-1.5 text-gray-400">
+          <li><strong>Ingen bindingstid:</strong> Abonnementet fornyes aldri automatisk. Du belastes kun for perioden du aktivt bestiller (1, 3, 6 eller 12 måneder).</li>
+          <li><strong>Ingen skjulte gebyrer:</strong> Prisen du ser i vår prisoversikt er den endelige prisen.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">3. Kontobruk og Samtidige Strømmer</h2>
+        <p>
+          Hvert standardabonnement er lisensiert for <strong>én (1) aktiv strøm av gangen</strong>. Du kan konfigurere spillelisten på flere enheter (Smart TV, mobil, nettbrett), men sendingen kan kun avspilles på én enhet samtidig. Dersom to enheter strømmer samtidig på samme konto, vil linjen automatisk blokkeres midlertidig av serverens sikkerhetssystem.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">4. Forbudt Bruk & Videresalg</h2>
+        <p>
+          Kontoen er strengt personlig. Det er strengt forbudt å:
+        </p>
+        <ul class="list-disc list-inside space-y-1.5 text-gray-400">
+          <li>Videreselge, dele eller offentliggjøre dine personlige M3U-lenker eller Xtream-innloggingsdetaljer.</li>
+          <li>Benytte automatisert re-streaming eller uautorisert opptak av strømmer for kommersiell distribusjon.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">5. Tjenestekvalitet & Internettilkobling</h2>
+        <p>
+          Vi streber etter å levere 99.9% serveroppetid. For optimal 4K Ultra HD-avspilling kreves en stabil internettforbindelse med minimum 25-30 Mbps hastighet. Norsk IPTV kan ikke holdes ansvarlig for forsinkelser eller kvalitetstap som skyldes lokal nettverksfeil hos brukerens internettleverandør (ISP).
+        </p>
+      </section>
+
+      <section class="pt-4 border-t border-white/10">
+        <h2 class="text-xl font-bold text-white mb-3">6. Endringer i Vilkårene</h2>
+        <p>
+          Vi forbeholder oss retten til å oppdatere disse vilkårene ved behov. Vesentlige endringer vil varsles i våre offisielle kanaler på Telegram og WhatsApp.
+        </p>
+      </section>
+
+    </div>
+
+  </main>
+
+  <Footer />
+  <FloatingWhatsApp />
+</Layout>

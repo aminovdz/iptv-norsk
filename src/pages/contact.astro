@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { MessageCircle, Send, Mail, MapPin, ShieldCheck, Clock } from 'lucide-astro';
+
+const breadcrumbs = [
+  { name: 'Hjem', item: '/' },
+  { name: 'Kontakt Oss', item: '/contact' },
+];
+
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Kontakt Norsk IPTV Support",
+  "description": "24/7 Døgnåpen kundeservice for IPTV Norge via WhatsApp, Telegram og e-post.",
+  "url": "https://norsk-iptv.net/contact",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Norsk IPTV",
+    "email": "contact@norsk-iptv.net",
+    "telephone": "+18036582620"
+  }
+};
+---
+
+<Layout
+  title="Kontakt Oss — 24/7 Norsk IPTV Kundeservice & Support"
+  description="Trenger du hjelp med oppsett, test eller bestilling av IPTV i Norge? Kontakt vår 24/7 support på WhatsApp (+1 803 658 2620), Telegram eller e-post."
+  breadcrumbs={breadcrumbs}
+  schemaData={contactPageSchema}
+>
+  <StickyHeader />
+
+  <main>
+    <!-- Contact Form & Support Channels Section -->
+    <ContactForm />
+
+    <!-- FAQ Quick Help -->
+    <div class="border-t border-white/10">
+      <FAQSection />
+    </div>
+  </main>
+
+  <Footer />
+  <FloatingWhatsApp />
+</Layout>

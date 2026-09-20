@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StickyHeader from '../components/StickyHeader.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import { ShieldAlert, Clock, CheckCircle2, MessageCircle, AlertTriangle, ArrowRight } from 'lucide-astro';
+
+const breadcrumbs = [
+  { name: 'Hjem', item: '/' },
+  { name: 'Refusjonspolicy', item: '/refund' },
+];
+
+const whatsappUrl = "https://wa.me/18036582620?text=Hei!%20Jeg%20har%20et%20spørsmål%20angående%20refusjon%20innenfor%2024-timers%20garantien.";
+---
+
+<Layout
+  title="Refusjonspolicy (24 Timer) | Norsk IPTV"
+  description="Les om vår 24-timers fornøydgaranti og refusjonsvilkår for Norsk IPTV abonnement."
+  breadcrumbs={breadcrumbs}
+>
+  <StickyHeader />
+
+  <main class="py-16 md:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-semibold text-emerald-400 mb-4">
+        <Clock class="w-3.5 h-3.5" />
+        <span>24-Timers Full Fornøydgaranti</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+        Refusjonspolicy & Garanti
+      </h1>
+      <p class="text-xs sm:text-sm text-gray-400">
+        Klar, trygg og rettferdig policy for alle nye bestillinger
+      </p>
+    </div>
+
+    <!-- Alert Box: Strict 24-Hour Policy Rule -->
+    <div class="rounded-2xl bg-amber-500/10 border border-amber-500/30 p-6 mb-8 text-amber-200 text-sm flex items-start gap-4">
+      <AlertTriangle class="w-6 h-6 text-amber-400 shrink-0 mt-0.5" />
+      <div>
+        <strong class="font-bold text-amber-300 block mb-1">Viktig Informasjon om Refusjonsfristen:</strong>
+        <span>
+          Hos Norsk IPTV gjelder refusjonsgarantien <strong>strengt i nøyaktig 24 timer</strong> etter at dine innloggingsdetaljer er sendt ut. Etter at 24-timersperioden er utløpt, kan vi dessverre ikke innvilge refusjon på grunn av umiddelbare serveraktiveringskostnader.
+        </span>
+      </div>
+    </div>
+
+    <!-- Content Card -->
+    <div class="rounded-3xl bg-[#0e0e17] border border-white/10 p-8 sm:p-12 shadow-xl space-y-8 text-gray-300 text-sm sm:text-base leading-relaxed">
+      
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">1. Vår 24-Timers Trygghetsgaranti</h2>
+        <p>
+          Vi er sikre på kvaliteten og stabiliteten til våre 4K-servere. Skulle du mot formodning oppleve uoverstigelige tekniske utfordringer som vårt supportteam ikke klarer å løse, har du full rett til å kreve <strong>100% refusjon innen 24 timer</strong> fra kjøpstidspunktet.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">2. Vilkår for Å Få Godkjent Refusjon</h2>
+        <p class="mb-3">
+          For at en refusjonsforespørsel skal behandles og godkjennes, må følgende kriterier oppfylles:
+        </p>
+        <ul class="list-disc list-inside space-y-2 text-gray-400">
+          <li>Forespørselen må sendes inn skriftlig til vårt supportteam innen <strong>maksimalt 24 timer</strong> fra leveringstidspunktet.</li>
+          <li>Kunden må ha kontaktet support på WhatsApp eller e-post for grunnleggende feilsøking av applikasjon/oppsett.</li>
+          <li>Abonnementet må ikke ha blitt misbrukt til ulovlig restreaming eller deling på flere samtidige enheter.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">3. Slik Ber Du Om Refusjon</h2>
+        <p class="mb-4">
+          Det er enkelt å be om refusjon innenfor 24-timersfristen:
+        </p>
+        <ol class="list-decimal list-inside space-y-2 text-gray-400">
+          <li>Send en melding på WhatsApp til <strong>+1 (803) 658-2620</strong> eller e-post til <strong>contact@norsk-iptv.net</strong>.</li>
+          <li>Oppgi ditt ordrenummer, e-postadresse og en kort beskrivelse av problemet.</li>
+          <li>Vårt økonomiteam vil behandle og tilbakeføre beløpet innen 1–3 virkedager.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">4. Unntak Etter 24 Timer</h2>
+        <p>
+          Siden våre digitale serverlinjer aktiveres og reserveres for hele abonnementsperioden, kan vi <strong>ikke</strong> tilby delvis eller full refusjon etter at 24 timer har passert. Dette gjelder også dersom du ombestemmer deg, opplever lokale feil på eget WiFi-utstyr, eller ikke bruker tjenesten i hele perioden.
+        </p>
+      </section>
+
+      <!-- CTA Box -->
+      <div class="p-6 rounded-2xl bg-white/5 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <div class="text-sm font-bold text-white">Trenger du hjelp med oppsettet før du ber om refusjon?</div>
+          <div class="text-xs text-gray-400 mt-0.5">99% av oppstartsproblemer løses på 2 minutter med riktig app-konfigurasjon.</div>
+        </div>
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-black font-bold text-xs shrink-0 transition-colors"
+        >
+          <MessageCircle class="w-4 h-4" />
+          <span>Få Hjelp på WhatsApp</span>
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <Footer />
+  <FloatingWhatsApp />
+</Layout>

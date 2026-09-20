@@ -1,0 +1,216 @@
+---
+import { Check, Zap, ShieldCheck, Sparkles, MessageCircle, ArrowRight, Flame } from 'lucide-astro';
+
+interface PricingPlan {
+  id: string;
+  name: string;
+  duration: string;
+  priceNOK: string;
+  priceEUR: string;
+  pricePerMonth: string;
+  popular?: boolean;
+  savings?: string;
+  features: string[];
+}
+
+const pricingPlans: PricingPlan[] = [
+  {
+    id: '12-months',
+    name: '12 Måneder VIP',
+    duration: '1 År Komplett Tilgang',
+    priceNOK: '600 kr',
+    priceEUR: '~€55',
+    pricePerMonth: '50 kr / md',
+    popular: true,
+    savings: 'Spar 60% — BESTE VERDI',
+    features: [
+      'Ukomprimert 4K & FHD kvalitet (60 FPS)',
+      'Anti-Freeze™ 9.0 Premium Serverklynge',
+      'Full Elektronisk Programguide (EPG)',
+      '7 Dagers Catch-up & Reprise-arkiv',
+      'Støtte for alle Smart-TV og apper',
+      'Øyeblikkelig levering på WhatsApp/e-post',
+      'Prioritert 24/7 Norsk Kundesupport',
+      '24-Timers Full Fornøydgaranti'
+    ]
+  },
+  {
+    id: '6-months',
+    name: '6 Måneder Pro',
+    duration: 'Halvårlig Tilgang',
+    priceNOK: '333 kr',
+    priceEUR: '~€30',
+    pricePerMonth: '55 kr / md',
+    savings: 'Spar 40%',
+    features: [
+      'Krystallklar 4K & FHD strømming',
+      'Anti-Freeze™ serverteknologi',
+      'Sanntids EPG TV-guide',
+      'Catch-up TV-funksjon',
+      'Multi-enhet kompatibilitet',
+      'Rask aktivering under 5 minutter',
+      '24/7 WhatsApp & Telegram Hjelp',
+      '24-Timers Refusjonsgaranti'
+    ]
+  },
+  {
+    id: '3-months',
+    name: '3 Måneder Pluss',
+    duration: 'Kvartalsvis Tilgang',
+    priceNOK: '222 kr',
+    priceEUR: '~€20',
+    pricePerMonth: '74 kr / md',
+    savings: 'Populær Test',
+    features: [
+      'Full 4K & Full HD kvalitet',
+      'Stabil serveroppetid (99.9%)',
+      'Oppdatert EPG Programguide',
+      'Støtter Smart TV, Firestick & Mobil',
+      'Automatisk levering',
+      'Standard 24/7 Kundeservice',
+      '24-Timers Refusjonsgaranti'
+    ]
+  },
+  {
+    id: '1-month',
+    name: '1 Måned Basis',
+    duration: 'Månedlig Fleksibel Tilgang',
+    priceNOK: '90 kr',
+    priceEUR: '~€8',
+    pricePerMonth: '90 kr / md',
+    features: [
+      'Full 4K & HD oppløsning',
+      'Standard serverlinje',
+      'EPG TV-guide inkludert',
+      'Kompatibel med alle IPTV-apper',
+      'Rask aktivering',
+      'Standard Kundeservice',
+      '24-Timers Refusjonsgaranti'
+    ]
+  }
+];
+
+const getWhatsAppOrderLink = (planName: string, price: string) => {
+  const text = encodeURIComponent(`Hei! Jeg ønsker å bestille ${planName} (${price}) hos Norsk IPTV.`);
+  return `https://wa.me/18036582620?text=${text}`;
+};
+---
+
+<section id="pricing" class="py-20 md:py-28 relative overflow-hidden" aria-labelledby="pricing-heading">
+  
+  <!-- Ambient Glow Effects -->
+  <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-[#8b5cf6]/15 to-[#06b6d4]/10 blur-[140px] rounded-full pointer-events-none -z-10"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#8b5cf6]/10 border border-[#8b5cf6]/30 text-xs font-semibold text-[#a78bfa] mb-4">
+        <Sparkles class="w-3.5 h-3.5 text-[#06b6d4]" />
+        <span>Gjennomsiktige Priser • Ingen Bindingstid</span>
+      </div>
+      <h2 id="pricing-heading" class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6">
+        Velg Ditt <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4]">IPTV Norge Abonnement</span>
+      </h2>
+      <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
+        Alle abonnementer er forhåndsbetalte med 100% trygghet. Ingen automatiske fornyelser eller skjulte gebyrer. Start med vår mest populære 12-måneders pakke for maksimal verdi.
+      </p>
+    </div>
+
+    <!-- Pricing Cards Grid (4 Cards - 12 Month prominently first) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-5 items-stretch">
+      {pricingPlans.map((plan) => {
+        const orderUrl = getWhatsAppOrderLink(plan.name, plan.priceNOK);
+        return (
+          <div class={`relative rounded-3xl flex flex-col justify-between transition-all duration-300 ${
+            plan.popular 
+              ? 'glass-card-featured p-7 lg:p-8 transform lg:-translate-y-2 border-[#8b5cf6]/60 shadow-2xl shadow-[#8b5cf6]/20' 
+              : 'glass-card p-6 sm:p-7 hover:border-white/20'
+          }`}>
+            
+            <!-- Popular Badge for 12 Month Plan -->
+            {plan.popular && (
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4] text-white text-xs font-extrabold uppercase tracking-wider shadow-lg shadow-[#8b5cf6]/40">
+                <Flame class="w-3.5 h-3.5 fill-white" />
+                <span>Mest Populær</span>
+              </div>
+            )}
+
+            <div>
+              <!-- Plan Header -->
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-white tracking-tight">{plan.name}</h3>
+                {plan.savings && (
+                  <span class={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                    plan.popular 
+                      ? 'bg-[#8b5cf6]/30 text-[#e9d5ff] border border-[#8b5cf6]/40' 
+                      : 'bg-white/10 text-gray-300'
+                  }`}>
+                    {plan.savings}
+                  </span>
+                )}
+              </div>
+              
+              <p class="text-xs text-gray-400 mb-6">{plan.duration}</p>
+
+              <!-- Price Box -->
+              <div class="mb-6 pb-6 border-b border-white/10">
+                <div class="flex items-baseline gap-1.5">
+                  <span class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">{plan.priceNOK}</span>
+                  <span class="text-xs text-gray-400 font-medium">/ {plan.priceEUR}</span>
+                </div>
+                <div class="text-xs text-[#06b6d4] font-semibold mt-1">Kun {plan.pricePerMonth}</div>
+              </div>
+
+              <!-- Feature List -->
+              <ul class="space-y-3 mb-8 text-xs sm:text-sm text-gray-300">
+                {plan.features.map((feature) => (
+                  <li class="flex items-start gap-2.5">
+                    <div class={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
+                      plan.popular ? 'bg-[#8b5cf6]/30 text-[#c084fc]' : 'bg-white/10 text-[#06b6d4]'
+                    }`}>
+                      <Check class="w-3 h-3 stroke-[3]" />
+                    </div>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- CTA Order Button -->
+            <div>
+              <a
+                href={orderUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-lg ${
+                  plan.popular
+                    ? 'bg-gradient-to-r from-[#8b5cf6] to-[#06b6d4] hover:from-[#7c3aed] hover:to-[#0891b2] text-white shadow-[#8b5cf6]/30 hover:shadow-[#8b5cf6]/50 transform hover:-translate-y-0.5'
+                    : 'bg-white/10 hover:bg-white/20 text-white border border-white/10 hover:border-white/20'
+                }`}
+                aria-label={`Bestill ${plan.name} for ${plan.priceNOK}`}
+              >
+                <MessageCircle class="w-4 h-4" />
+                <span>Bestill Nå ({plan.priceNOK})</span>
+              </a>
+              
+              <div class="flex items-center justify-center gap-1 text-[11px] text-gray-400 mt-3">
+                <ShieldCheck class="w-3.5 h-3.5 text-emerald-400" />
+                <span>24 timers full fornøydgaranti</span>
+              </div>
+            </div>
+
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Quality Guarantee Notice Below Pricing Table -->
+    <div class="mt-12 text-center">
+      <p class="text-xs text-gray-400 max-w-2xl mx-auto">
+        Trenger du hjelp med oppsett eller har spørsmål før bestilling? Vårt norske support-team er tilgjengelig 24/7 på <a href="https://wa.me/18036582620" class="text-[#8b5cf6] hover:underline font-semibold">WhatsApp</a> og <a href="mailto:support@castvera.com" class="text-[#06b6d4] hover:underline font-semibold">e-post</a>.
+      </p>
+    </div>
+
+  </div>
+</section>
