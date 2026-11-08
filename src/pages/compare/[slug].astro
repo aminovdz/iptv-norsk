@@ -6,6 +6,7 @@ import UserReviewsSection from '../../components/UserReviewsSection.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import CTASection from '../../components/CTASection.astro';
 import Footer from '../../components/Footer.astro';
+import LiveScores from '../../components/LiveScores.astro';
 
 import FloatingWhatsApp from '../../components/FloatingWhatsApp.astro';
 import GroupsPopup from '../../components/GroupsPopup.astro';
@@ -109,6 +110,11 @@ const breadcrumbs = [
       <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
         {comp.summary}
       </p>
+    </div>
+
+    <!-- LiveScores Infinite Loop Carousel -->
+    <div class="mb-16 -mx-4 sm:-mx-6 lg:-mx-8">
+      <LiveScores />
     </div>
 
     <!-- Comparison Table Section -->

@@ -33,4 +33,4 @@ Våre [Norsk IPTV](/) servere blokkerer IKKE internasjonale IP-adresser. Du kan 
 **Viktig regel:** Et standard IPTV-abonnement tillater én (1) tilkobling om gangen. 
 Du *kan* installere appen både hjemme og på hytta, men du kan **ikke se på to enheter samtidig**. Gjør du dette, vil serveren blokkere kontoen automatisk.
 
-Ønsker dere å se samtidig, tilbyr Norsk IPTV rimelige **Tvilling-abonnement** (Multi-room). [Kontakt oss på WhatsApp](https://wa.me/18036582620) for priser!
+Ønsker dere å se samtidig, tilbyr Norsk IPTV rimelige **Tvilling-abonnement** (Multi-room). [Kontakt oss på WhatsApp](https://wa.me/213550592200) for priser!

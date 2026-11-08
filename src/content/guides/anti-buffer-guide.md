@@ -75,4 +75,4 @@ Den aller viktigste forutsetningen er at selve kilden har tilstrekkelig overskud
 
 Ved å kombinere en kablet tilkobling, Cloudflare DNS og en profesjonell app som TiviMate med [Norsk IPTV sitt VIP abonnement](/#pricing), er du garantert en førsteklasses TV-opplevelse uten irriterende avbrudd.
 
-> **Trenger du veiledning for feilsøking på din enhet?** Vårt norske support-team står klare til å hjelpe deg døgnet rundt på [WhatsApp](https://wa.me/18036582620). [Test Norsk IPTV i dag](/#pricing) for kun 600 kr for et helt år!
+> **Trenger du veiledning for feilsøking på din enhet?** Vårt norske support-team står klare til å hjelpe deg døgnet rundt på [WhatsApp](https://wa.me/213550592200). [Test Norsk IPTV i dag](/#pricing) for kun 600 kr for et helt år!

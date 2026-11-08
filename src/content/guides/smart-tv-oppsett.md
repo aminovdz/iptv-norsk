@@ -78,4 +78,4 @@ For å unngå hakking eller forsinkelser under direktesendte sendinger, bør du 
 
 Hos [Norsk IPTV](/) overlater vi deg aldri til deg selv. Vårt dedikerte norske support-team er tilgjengelig **24 timer i døgnet på WhatsApp** for å veilede deg steg for steg gjennom installasjonen helt til alt fungerer perfekt på din TV.
 
-> **Klar for krystallklar TV på din storskjerm?** [Bestill ditt Norsk IPTV abonnement nå](/#pricing) eller send en melding til vår [WhatsApp Support](https://wa.me/18036582620) for gratis bistand!
+> **Klar for krystallklar TV på din storskjerm?** [Bestill ditt Norsk IPTV abonnement nå](/#pricing) eller send en melding til vår [WhatsApp Support](https://wa.me/213550592200) for gratis bistand!

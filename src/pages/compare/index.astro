@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import StickyHeader from '../../components/StickyHeader.astro';
 import Footer from '../../components/Footer.astro';
 import FloatingWhatsApp from '../../components/FloatingWhatsApp.astro';
+import LiveScores from '../../components/LiveScores.astro';
 import { Scale, ArrowRight, CheckCircle2, Trophy, Sparkles } from 'lucide-astro';
 
 const breadcrumbs = [
@@ -53,6 +54,11 @@ const comparisons = [
       <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
         Vi tester og evaluerer markedets ledende IPTV-tjenester på bildekvalitet, serverstabilitet, EPG og pris for å hjelpe deg med å ta et trygt valg.
       </p>
+    </div>
+
+    <!-- LiveScores Infinite Loop Carousel -->
+    <div class="mb-16 -mx-4 sm:-mx-6 lg:-mx-8">
+      <LiveScores />
     </div>
 
     <!-- Comparisons Grid -->

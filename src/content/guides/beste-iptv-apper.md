@@ -95,4 +95,4 @@ Uansett hvilken app du velger fra listen ovenfor, tar det under tre minutter å 
 2. **Motta påloggingsdata:** Du mottar dine personlige M3U-lenker og Xtream Codes innloggingsdetaljer umiddelbart på WhatsApp eller e-post.
 3. **Logg inn i appen:** Skriv inn detaljene i appen du har lastet ned, og nyt Norges mest stabile TV-opplevelse!
 
-> **Trenger du veiledning for din spesifikke TV?** Vår døgnåpne support er alltid tilgjengelig på [WhatsApp](https://wa.me/18036582620) for å hjelpe deg i gang.
+> **Trenger du veiledning for din spesifikke TV?** Vår døgnåpne support er alltid tilgjengelig på [WhatsApp](https://wa.me/213550592200) for å hjelpe deg i gang.

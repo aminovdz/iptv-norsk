@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 import ContactForm from '../components/ContactForm.astro';
 import FAQSection from '../components/FAQSection.astro';
+import LiveScores from '../components/LiveScores.astro';
 import { MessageCircle, Send, Mail, MapPin, ShieldCheck, Clock } from 'lucide-astro';
 
 const breadcrumbs = [
@@ -22,14 +23,14 @@ const contactPageSchema = {
     "@type": "Organization",
     "name": "Norsk IPTV",
     "email": "contact@norsk-iptv.net",
-    "telephone": "+18036582620"
+    "telephone": "+213550592200"
   }
 };
 ---
 
 <Layout
   title="Kontakt Oss — 24/7 Norsk IPTV Kundeservice & Support"
-  description="Trenger du hjelp med oppsett, test eller bestilling av IPTV i Norge? Kontakt vår 24/7 support på WhatsApp (+1 803 658 2620), Telegram eller e-post."
+  description="Trenger du hjelp med oppsett, test eller bestilling av IPTV i Norge? Kontakt vår 24/7 support på WhatsApp (+213 550 59 22 00), Telegram eller e-post."
   breadcrumbs={breadcrumbs}
   schemaData={contactPageSchema}
 >
@@ -38,6 +39,9 @@ const contactPageSchema = {
   <main>
     <!-- Contact Form & Support Channels Section -->
     <ContactForm />
+
+    <!-- LiveScores Infinite Loop Carousel -->
+    <LiveScores />
 
     <!-- FAQ Quick Help -->
     <div class="border-t border-white/10">

@@ -84,3 +84,35 @@
 .animate-fade-up {
   animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Infinite Live Score Carousel Loop */
+@keyframes loopScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-loop-scroll {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: loopScroll 40s linear infinite;
+}
+
+.animate-loop-scroll:hover,
+.animate-loop-scroll:focus-within {
+  animation-play-state: paused;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

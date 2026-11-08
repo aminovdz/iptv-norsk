@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import StickyHeader from '../components/StickyHeader.astro';
 import Footer from '../components/Footer.astro';
 import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import LiveScores from '../components/LiveScores.astro';
 import { Gift, Users, Sparkles, ArrowRight, MessageCircle, CheckCircle2, ShieldCheck, Trophy } from 'lucide-astro';
 
 const breadcrumbs = [
@@ -31,7 +32,7 @@ const tiers = [
   }
 ];
 
-const whatsappReferralUrl = "https://wa.me/18036582620?text=Hei!%20Jeg%20ønsker%20min%20personlige%20vervekode%20for%20Norsk%20IPTV.";
+const whatsappReferralUrl = "https://wa.me/213550592200?text=Hei!%20Jeg%20ønsker%20min%20personlige%20vervekode%20for%20Norsk%20IPTV.";
 ---
 
 <Layout
@@ -67,6 +68,11 @@ const whatsappReferralUrl = "https://wa.me/18036582620?text=Hei!%20Jeg%20ønsker
           <span>Få Din Vervekode på WhatsApp</span>
           <ArrowRight class="w-4 h-4" />
         </a>
+      </div>
+
+      <!-- LiveScores Infinite Loop Carousel -->
+      <div class="mb-20 -mx-4 sm:-mx-6 lg:-mx-8">
+        <LiveScores />
       </div>
 
       <!-- Reward Tiers Grid -->

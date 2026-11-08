@@ -75,4 +75,4 @@ Hos Norsk IPTV koster et fullverdig 12-måneders VIP abonnement kun **600 kr** (
 
 Dersom du ønsker en stabil, lynrask og moderne TV-løsning tilpasset norske bredbåndsnettverk, er **Norsk IPTV** det klare førstevalget i 2026. Med ukomprimert 4K-kvalitet, døgnåpen support på WhatsApp og markedets mest konkurransedyktige årspris på kun 600 kr, får du maksimal underholdningsverdi for pengene.
 
-> **Klar til å oppgradere TV-opplevelsen?** [Besøk Norsk IPTV nå](/#pricing) eller kontakt kundeservice direkte på [WhatsApp](https://wa.me/18036582620) for å starte i dag!
+> **Klar til å oppgradere TV-opplevelsen?** [Besøk Norsk IPTV nå](/#pricing) eller kontakt kundeservice direkte på [WhatsApp](https://wa.me/213550592200) for å starte i dag!
